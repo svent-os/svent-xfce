@@ -1,0 +1,10 @@
+# Normalize text files to LF so Linux builds are not broken by CRLF
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.gif binary
+*.ttf binary
+*.otf binary
+*.ico binary

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Svent XFCE Panel Setup
+Comment=Apply the Svent panel on first XFCE login
+Exec=svent-xfce-firstrun
+OnlyShowIn=XFCE;
+X-GNOME-Autostart-enabled=true
+NoDisplay=true

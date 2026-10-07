@@ -1,0 +1,12 @@
+#!/bin/sh
+# Apply the Svent wallpaper in XFCE once xfdesktop has created its backdrop
+# properties. Retries briefly because autostart can run before xfdesktop.
+i=0
+while [ "$i" -lt 30 ]; do
+  if xfconf-query -c xfce4-desktop -l 2>/dev/null | grep -q '/last-image'; then
+    break
+  fi
+  i=$((i + 1))
+  sleep 1
+done
+exec /usr/libexec/svent/svent-wallpaper --apply

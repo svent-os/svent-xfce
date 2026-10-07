@@ -1,0 +1,21 @@
+Source: svent-xfce
+Section: x11
+Priority: optional
+Maintainer: z1rov <fabian@zirov.net>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+
+Package: svent-xfce
+Architecture: all
+Depends: svent-core, svent-artwork, xfce4, xfce4-terminal, xterm,
+ xfdesktop4, xfce4-settings, xfce4-genmon-plugin, xfce4-whiskermenu-plugin,
+ feh, fonts-jetbrains-mono, greybird-gtk-theme, xclip, iproute2,
+ xdg-user-dirs, python3, ${misc:Depends}
+Recommends: elementary-xfce-icon-theme, xfce4-appfinder,
+ xfce4-pulseaudio-plugin, network-manager-gnome, pavucontrol, firefox-esr
+Description: Svent OS XFCE session defaults
+ A dark XFCE session for Svent OS: a top panel, the Greybird-dark theme,
+ xterm for catalog tools and the Svent wallpaper via the shared selector.
+ Shipped as /etc/skel defaults so a new user gets it on first login.
+ Choose this session in the installer.

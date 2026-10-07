@@ -1,0 +1,265 @@
+{
+  "panel": {
+    "position": [
+      "string",
+      "p=6;x=0;y=0"
+    ],
+    "position-locked": [
+      "bool",
+      true
+    ],
+    "mode": [
+      "uint",
+      0
+    ],
+    "size": [
+      "uint",
+      34
+    ],
+    "nrows": [
+      "uint",
+      1
+    ],
+    "length": [
+      "uint",
+      100
+    ],
+    "length-adjust": [
+      "bool",
+      false
+    ],
+    "autohide-behavior": [
+      "uint",
+      0
+    ],
+    "background-style": [
+      "uint",
+      1
+    ],
+    "background-rgba": [
+      "double",
+      [
+        0.047058823529411764,
+        0.054901960784313725,
+        0.06666666666666667,
+        1.0
+      ]
+    ],
+    "icon-size": [
+      "uint",
+      20
+    ]
+  },
+  "plugins": [
+    {
+      "id": 901,
+      "name": "menu",
+      "settings": {}
+    },
+    {
+      "id": 902,
+      "name": "launcher",
+      "settings": {
+        "items": [
+          "string",
+          [
+            "firefox.desktop"
+          ]
+        ]
+      }
+    },
+    {
+      "id": 903,
+      "name": "launcher",
+      "settings": {
+        "items": [
+          "string",
+          [
+            "tor.desktop"
+          ]
+        ]
+      }
+    },
+    {
+      "id": 904,
+      "name": "launcher",
+      "settings": {
+        "items": [
+          "string",
+          [
+            "terminal.desktop"
+          ]
+        ]
+      }
+    },
+    {
+      "id": 905,
+      "name": "separator",
+      "settings": {
+        "style": [
+          "uint",
+          0
+        ]
+      }
+    },
+    {
+      "id": 906,
+      "name": "pager",
+      "settings": {
+        "rows": [
+          "uint",
+          1
+        ],
+        "miniature-view": [
+          "bool",
+          false
+        ]
+      }
+    },
+    {
+      "id": 907,
+      "name": "separator",
+      "settings": {
+        "style": [
+          "uint",
+          0
+        ]
+      }
+    },
+    {
+      "id": 908,
+      "name": "tasklist",
+      "settings": {
+        "show-handle": [
+          "bool",
+          false
+        ],
+        "show-labels": [
+          "bool",
+          false
+        ],
+        "grouping": [
+          "uint",
+          1
+        ]
+      }
+    },
+    {
+      "id": 909,
+      "name": "separator",
+      "settings": {
+        "expand": [
+          "bool",
+          true
+        ],
+        "style": [
+          "uint",
+          0
+        ]
+      }
+    },
+    {
+      "id": 915,
+      "name": "genmon",
+      "settings": {
+        "use-label": [
+          "bool",
+          false
+        ],
+        "update-period": [
+          "int",
+          15000
+        ],
+        "enable-single-row": [
+          "bool",
+          true
+        ],
+        "font": [
+          "string",
+          "Sans 10"
+        ]
+      }
+    },
+    {
+      "id": 910,
+      "name": "systray",
+      "settings": {
+        "size-max": [
+          "uint",
+          20
+        ],
+        "square-icons": [
+          "bool",
+          true
+        ],
+        "symbolic-icons": [
+          "bool",
+          true
+        ]
+      }
+    },
+    {
+      "id": 911,
+      "name": "pulseaudio",
+      "optional": true,
+      "settings": {}
+    },
+    {
+      "id": 912,
+      "name": "power-manager-plugin",
+      "optional": true,
+      "settings": {}
+    },
+    {
+      "id": 913,
+      "name": "clock",
+      "settings": {
+        "mode": [
+          "uint",
+          2
+        ],
+        "digital-layout": [
+          "uint",
+          3
+        ],
+        "digital-format": [
+          "string",
+          "%a %d %b  %H:%M"
+        ],
+        "digital-time-format": [
+          "string",
+          "%a %d %b  %H:%M"
+        ],
+        "digital-time-font": [
+          "string",
+          "Sans 10"
+        ]
+      }
+    },
+    {
+      "id": 914,
+      "name": "actions",
+      "settings": {
+        "appearance": [
+          "uint",
+          1
+        ],
+        "items": [
+          "string",
+          [
+            "+lock-screen",
+            "+suspend",
+            "-hibernate",
+            "-hybrid-sleep",
+            "+separator",
+            "+shutdown",
+            "+restart",
+            "+separator",
+            "-logout",
+            "+logout-dialog"
+          ]
+        ]
+      }
+    }
+  ]
+}

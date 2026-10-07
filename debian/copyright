@@ -1,0 +1,8 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: svent-core
+
+Files: *
+Copyright: 2026 Svent OS Maintainers
+License: GPL-3.0-or-later
+ On Debian systems the full license text is in
+ /usr/share/common-licenses/GPL-3.

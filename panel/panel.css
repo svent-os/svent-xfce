@@ -1,0 +1,37 @@
+/* BEGIN Z1ROV DARK PANEL */
+.xfce4-panel {
+    background-color: #0c0e11;
+    color: #e6e7e8;
+    border: 0;
+    font-family: Sans;
+    font-size: 10pt;
+}
+.xfce4-panel button {
+    background: transparent;
+    color: #e6e7e8;
+    border: 0;
+    border-radius: 2px;
+    box-shadow: none;
+    padding: 2px 5px;
+    margin: 0 1px;
+}
+.xfce4-panel button:hover {
+    background-color: #242830;
+    color: #ffffff;
+}
+.xfce4-panel button:checked,
+.xfce4-panel button:active {
+    background-color: #242830;
+    color: #ff6266;
+    box-shadow: none;
+}
+.xfce4-panel menu,
+.xfce4-panel menuitem {
+    background-color: #0c0e11;
+    color: #e6e7e8;
+}
+.xfce4-panel menuitem:hover {
+    background-color: #242830;
+    color: #ff6266;
+}
+/* END Z1ROV DARK PANEL */

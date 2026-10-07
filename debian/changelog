@@ -1,0 +1,61 @@
+svent-xfce (0.4.0) unstable; urgency=medium
+
+  * Couple with svent-artwork orca branding: transparent red-orca logo for the
+    whisker menu and orca-dark as the default wallpaper (seeded per user).
+  * Use xterm for catalog tools (svent-run keeps the window open on exit).
+  * Promote svent-artwork and xfce4-whiskermenu-plugin to Depends.
+
+ -- z1rov <fabian@zirov.net>  Tue, 07 Oct 2026 23:59:00 -0500
+
+svent-xfce (0.3.2) unstable; urgency=medium
+
+  * Call the wallpaper selector at its new /usr/libexec/svent path.
+
+ -- Svent OS Maintainers <maintainers@svent.invalid>  Sun, 04 Oct 2026 16:00:00 +0000
+
+svent-xfce (0.3.1) unstable; urgency=medium
+
+  * postinst: deploy the XFCE config to root and every existing user and
+    reset the panel first-run flag, so all users share the same defaults and
+    reinstalls propagate updates, not just new accounts.
+
+ -- Svent OS Maintainers <maintainers@svent.invalid>  Sun, 04 Oct 2026 13:30:00 +0000
+
+svent-xfce (0.3.0) unstable; urgency=medium
+
+  * Adopt the z1rov dark top panel: near-black panel, seven workspaces, the
+    Svent logo menu button (Super opens it), IP module, and Firefox/Tor/
+    Terminal launchers. Applied once per user on first login via apply.py.
+  * Use the Svent logo and the system ridge-dark wallpaper, not bundled copies.
+
+ -- Svent OS Maintainers <maintainers@svent.invalid>  Sun, 04 Oct 2026 12:30:00 +0000
+
+svent-xfce (0.2.2) unstable; urgency=medium
+
+  * Use xfce4-terminal as the default terminal instead of kitty; terminal
+    shortcuts launch the default via exo-open.
+  * Apply the wallpaper reliably: a small autostart wrapper waits for
+    xfdesktop to create its backdrop properties, then applies it.
+
+ -- Svent OS Maintainers <maintainers@svent.invalid>  Sun, 04 Oct 2026 11:00:00 +0000
+
+svent-xfce (0.2.1) unstable; urgency=medium
+
+  * Drop the bundled kitty helper; it conflicted with xfce4-helpers, which
+    already ships one. helpers.rc still selects kitty as the terminal.
+
+ -- Svent OS Maintainers <maintainers@svent.invalid>  Sun, 04 Oct 2026 10:30:00 +0000
+
+svent-xfce (0.2.0) unstable; urgency=medium
+
+  * Ship a simple dark XFCE config as /etc/skel defaults: a top panel,
+    Greybird-dark theme, kitty as the terminal, and keyboard shortcuts.
+  * Keep the autostart for the shared Svent wallpaper selector.
+
+ -- Svent OS Maintainers <maintainers@svent.invalid>  Sun, 04 Oct 2026 10:00:00 +0000
+
+svent-xfce (0.1.0) unstable; urgency=medium
+
+  * Initial release: XFCE session defaults split from svent-desktop.
+
+ -- Svent OS Maintainers <maintainers@svent.invalid>  Thu, 02 Oct 2026 12:00:00 +0000

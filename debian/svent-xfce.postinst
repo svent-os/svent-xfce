@@ -1,0 +1,22 @@
+#!/bin/sh
+set -e
+if [ "$1" = "configure" ]; then
+  # Deploy the Svent XFCE config to root and every existing user, so all
+  # users share the same defaults and reinstalls propagate updates. New users
+  # get the same files from /etc/skel. The panel is re-applied on next login.
+  deploy() {
+    home="$1"; owner="$2"
+    [ -d "$home" ] || return 0
+    mkdir -p "$home/.config/xfce4" "$home/.config/svent"
+    cp -a /etc/skel/.config/xfce4/. "$home/.config/xfce4/"
+    [ -f "$home/.config/svent/wallpaper.choice" ] || echo "orca-dark" > "$home/.config/svent/wallpaper.choice"
+    chown -R "$owner" "$home/.config/xfce4" "$home/.config/svent" 2>/dev/null || true
+    rm -f "$home/.local/state/svent-xfce-panel.done" 2>/dev/null || true
+  }
+  deploy /root "root:root"
+  for home in /home/*; do
+    [ -d "$home" ] || continue
+    deploy "$home" "$(basename "$home"):$(basename "$home")"
+  done
+fi
+#DEBHELPER#
