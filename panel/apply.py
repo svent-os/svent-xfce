@@ -261,8 +261,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--restore", action="store_true")
     args = parser.parse_args()
-    if os.geteuid() == 0:
-        parser.error("Run this installer as your desktop user, without sudo")
     for command in ("xfce4-panel", "xfconf-query", "exo-open", "ip", "xfdesktop"):
         if not shutil.which(command):
             parser.error("Missing dependency: " + command)

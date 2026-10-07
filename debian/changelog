@@ -1,3 +1,10 @@
+svent-xfce (0.4.1) unstable; urgency=medium
+
+  * Apply the Svent panel, theme and wallpaper for root too (SventOS runs as
+    root): drop the root refusal in apply.py and svent-xfce-firstrun.
+
+ -- z1rov <fabian@zirov.net>  Wed, 08 Oct 2026 00:30:00 -0500
+
 svent-xfce (0.4.0) unstable; urgency=medium
 
   * Couple with svent-artwork orca branding: transparent red-orca logo for the

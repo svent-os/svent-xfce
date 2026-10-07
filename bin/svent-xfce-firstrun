@@ -3,8 +3,6 @@
 set -u
 flag="${XDG_STATE_HOME:-$HOME/.local/state}/svent-xfce-panel.done"
 [ -f "$flag" ] && exit 0
-# apply.py refuses to run as root; the installer creates normal users
-[ "$(id -u)" = "0" ] && exit 0
 # Wait for the panel's xfconf channel to be ready
 i=0
 while [ "$i" -lt 30 ]; do
