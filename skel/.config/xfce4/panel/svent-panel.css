@@ -17,3 +17,9 @@
 #pager-906 button { background-color: #424c58; border: 1px solid #657181; color: #d8e0e8; margin: 2px; }
 #pager-906 button:checked { background-color: #a94749; border-color: #ff6266; color: #ffffff; }
 #genmon-915 button { padding: 2px 5px; border-radius: 4px; }
+
+XfdesktopIconView.view, XfdesktopIconView.view:backdrop { background-color: transparent; color: #ffffff; }
+XfdesktopIconView.view.label, XfdesktopIconView.view.label:backdrop { background-color: transparent; color: #ffffff; text-shadow: 0 1px 2px #101317; }
+XfdesktopIconView.view:selected, XfdesktopIconView.view:selected:backdrop { background-color: rgba(169, 71, 73, 0.65); color: #ffffff; }
+XfdesktopIconView.view.label:selected, XfdesktopIconView.view.label:selected:backdrop { background-color: #873c3b; color: #ffffff; }
+XfdesktopIconView.view .rubberband { background-color: rgba(255, 98, 102, 0.15); border: 1px solid #ff6266; }

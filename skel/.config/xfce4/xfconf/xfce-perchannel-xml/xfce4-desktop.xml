@@ -21,5 +21,7 @@
       <property name="show-trash" type="bool" value="true" />
       <property name="show-removable" type="bool" value="true" />
     </property>
+    <property name="single-click-underline-hover" type="bool" value="false" />
+    <property name="use-custom-label-background-color" type="bool" value="false" />
   </property>
 </channel>

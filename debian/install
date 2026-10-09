@@ -14,3 +14,5 @@ panel/assets usr/share/svent/xfce-panel/
 share/applications/svent-xfce-backgrounds.desktop usr/share/applications/
 panel/prepare-desktop.py usr/share/svent/xfce-panel/
 skel/.Xresources etc/skel/
+panel/activate-shortcuts.py usr/share/svent/xfce-panel/
+share/xdg/autostart/svent-xfce-shortcuts.desktop etc/xdg/autostart/
