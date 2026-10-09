@@ -33,37 +33,32 @@ def prepare(config, monitors, wallpaper_dir=WALLPAPERS):
     for name in ("show-home", "show-filesystem", "show-trash", "show-removable"):
         set_value(files, name, "bool", "true")
     backdrop = set_value(root, "backdrop", "empty", None)
-    set_value(backdrop, "single-workspace-mode", "bool", "true")
-    set_value(backdrop, "single-workspace-number", "int", "0")
+    def default(parent, name, kind, value):
+        node = parent.find("property[@name='" + name + "']")
+        return node if node is not None else set_value(parent, name, kind, value)
+    default(backdrop, "single-workspace-mode", "bool", "true")
+    default(backdrop, "single-workspace-number", "int", "0")
     screen = set_value(backdrop, "screen0", "empty", None)
     state = config / "svent"
     choice = (state / "wallpaper.choice").read_text().strip() if (state / "wallpaper.choice").exists() else "orca-dark"
     override = (state / "wallpaper.override").read_text().strip() if (state / "wallpaper.override").exists() else ""
     def usable(image):
-        return bool(image) and Path(image).is_file() and not image.startswith(("/usr/share/backgrounds/xfce/", "/usr/share/xfce4/backdrops/"))
-    selected = {}
+        return bool(image) and Path(image).is_file()
+    saved = [node.get("value", "") for node in screen.findall(".//property[@name='last-image']")]
     for name, portrait in monitors:
         monitor = set_value(screen, "monitor" + name, "empty", None)
-        workspace = set_value(monitor, "workspace0", "empty", None)
-        old = workspace.find("property[@name='last-image']")
-        current = old.get("value", "") if old is not None else ""
-        custom = current if usable(current) and not Path(current).is_relative_to(wallpaper_dir) else ""
-        candidates = [override, custom, str(wallpaper_dir / ("portrait" if portrait else "landscape") / ("svent-" + choice + ".png")), str(wallpaper_dir / "landscape/svent-orca-dark.png")]
-        selected["monitor" + name] = next((image for image in candidates if usable(image)), "")
-    fallback = next((image for image in selected.values() if image), "")
-    for monitor in screen.findall("property"):
-        if not monitor.get("name", "").startswith("monitor"):
-            continue
-        current = selected.get(monitor.get("name"), fallback)
+        local = [node.get("value", "") for node in monitor.findall(".//property[@name='last-image']")]
+        candidates = local + saved + [override, str(wallpaper_dir / ("portrait" if portrait else "landscape") / ("svent-" + choice + ".png")), str(wallpaper_dir / "landscape/svent-orca-dark.png")]
+        fallback = next((image for image in candidates if usable(image)), "")
         for number in range(5):
-            set_value(monitor, "workspace" + str(number), "empty", None)
-        for workspace in monitor.findall("property"):
-            if not workspace.get("name", "").startswith("workspace"):
-                continue
-            if current:
-                set_value(workspace, "last-image", "string", current)
-            set_value(workspace, "image-style", "int", "5")
-            set_value(workspace, "backdrop-cycle-enable", "bool", "false")
+            workspace = set_value(monitor, "workspace" + str(number), "empty", None)
+            image = workspace.find("property[@name='last-image']")
+            style = workspace.find("property[@name='image-style']")
+            disabled = style is not None and style.get("value") == "0"
+            if not disabled and (image is None or not usable(image.get("value", ""))) and fallback:
+                set_value(workspace, "last-image", "string", fallback)
+            default(workspace, "image-style", "int", "5")
+            default(workspace, "backdrop-cycle-enable", "bool", "false")
     path.parent.mkdir(parents=True, exist_ok=True)
     ET.indent(tree)
     temp = path.with_suffix(".svent-tmp")

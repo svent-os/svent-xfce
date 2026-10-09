@@ -1,3 +1,17 @@
+svent-xfce (0.5.11) unstable; urgency=medium
+
+  * Preserve backgrounds selected in XFCE across login and reinstall.
+  * Seed missing wallpaper settings without overriding saved preferences.
+  * Retain per-workspace backgrounds, image styles and cycling settings.
+
+ -- z1rov <fabian@zirov.net>  Fri, 09 Oct 2026 23:30:00 -0500
+
+svent-xfce (0.5.10) unstable; urgency=medium
+
+  * Display workspace names without duplicated number prefixes.
+
+ -- z1rov <fabian@zirov.net>  Fri, 09 Oct 2026 23:00:00 -0500
+
 svent-xfce (0.5.9) unstable; urgency=medium
 
   * Show window buttons only on the current workspace.

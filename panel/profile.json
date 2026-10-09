@@ -137,7 +137,7 @@
         ],
         "numbering": [
           "bool",
-          true
+          false
         ]
       }
     },
