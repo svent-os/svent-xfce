@@ -39,26 +39,37 @@ def prepare(config, monitors, wallpaper_dir=WALLPAPERS):
     state = config / "svent"
     choice = (state / "wallpaper.choice").read_text().strip() if (state / "wallpaper.choice").exists() else "orca-dark"
     override = (state / "wallpaper.override").read_text().strip() if (state / "wallpaper.override").exists() else ""
-    saved = [node.get("value", "") for node in screen.findall(".//property[@name='last-image']")]
     def usable(image):
         return bool(image) and Path(image).is_file() and not image.startswith(("/usr/share/backgrounds/xfce/", "/usr/share/xfce4/backdrops/"))
+    selected = {}
     for name, portrait in monitors:
         monitor = set_value(screen, "monitor" + name, "empty", None)
         workspace = set_value(monitor, "workspace0", "empty", None)
         old = workspace.find("property[@name='last-image']")
         current = old.get("value", "") if old is not None else ""
-        if not usable(current):
-            candidates = [override] + saved + [str(wallpaper_dir / ("portrait" if portrait else "landscape") / ("svent-" + choice + ".png")), str(wallpaper_dir / "landscape/svent-orca-dark.png")]
-            current = next((image for image in candidates if usable(image)), "")
-        if current:
-            set_value(workspace, "last-image", "string", current)
-        set_value(workspace, "image-style", "int", "5")
-        set_value(workspace, "backdrop-cycle-enable", "bool", "false")
+        custom = current if usable(current) and not Path(current).is_relative_to(wallpaper_dir) else ""
+        candidates = [override, custom, str(wallpaper_dir / ("portrait" if portrait else "landscape") / ("svent-" + choice + ".png")), str(wallpaper_dir / "landscape/svent-orca-dark.png")]
+        selected["monitor" + name] = next((image for image in candidates if usable(image)), "")
+    fallback = next((image for image in selected.values() if image), "")
+    for monitor in screen.findall("property"):
+        if not monitor.get("name", "").startswith("monitor"):
+            continue
+        current = selected.get(monitor.get("name"), fallback)
+        for number in range(5):
+            set_value(monitor, "workspace" + str(number), "empty", None)
+        for workspace in monitor.findall("property"):
+            if not workspace.get("name", "").startswith("workspace"):
+                continue
+            if current:
+                set_value(workspace, "last-image", "string", current)
+            set_value(workspace, "image-style", "int", "5")
+            set_value(workspace, "backdrop-cycle-enable", "bool", "false")
     path.parent.mkdir(parents=True, exist_ok=True)
     ET.indent(tree)
     temp = path.with_suffix(".svent-tmp")
     tree.write(temp, encoding="utf-8", xml_declaration=True)
     temp.replace(path)
+    return root
 
 def main():
     parser = argparse.ArgumentParser()
@@ -79,16 +90,8 @@ def main():
                 monitors = connected
         except (OSError, subprocess.TimeoutExpired):
             pass
-    prepare(config, monitors)
+    root = prepare(config, monitors)
     if os.environ.get("DISPLAY"):
-        path = config / "xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml"
-        root = ET.parse(path).getroot()
-        images = [node.get("value") for node in root.findall(".//property[@name='last-image']") if node.get("value") and Path(node.get("value")).is_file()]
-        if images:
-            try:
-                subprocess.run(["feh", "--no-fehbg", "--bg-fill", images[0]], check=False, timeout=2)
-            except (OSError, subprocess.TimeoutExpired):
-                pass
         import gi
         gi.require_version("Xfconf", "0")
         from gi.repository import Xfconf

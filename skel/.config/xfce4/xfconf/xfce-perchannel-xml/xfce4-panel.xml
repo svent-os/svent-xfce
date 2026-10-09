@@ -66,13 +66,14 @@
     </property>
     <property name="plugin-906" type="string" value="pager">
       <property name="rows" type="uint" value="1" />
-      <property name="miniature-view" type="bool" value="true" />
+      <property name="miniature-view" type="bool" value="false" />
+      <property name="numbering" type="bool" value="true" />
     </property>
     <property name="plugin-908" type="string" value="tasklist">
       <property name="show-handle" type="bool" value="false" />
       <property name="show-labels" type="bool" value="false" />
       <property name="grouping" type="uint" value="0" />
-      <property name="include-all-workspaces" type="bool" value="true" />
+      <property name="include-all-workspaces" type="bool" value="false" />
       <property name="include-all-monitors" type="bool" value="true" />
       <property name="show-only-minimized" type="bool" value="false" />
       <property name="switch-workspace-on-unminimize" type="bool" value="true" />

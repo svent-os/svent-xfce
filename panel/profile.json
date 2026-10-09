@@ -133,6 +133,10 @@
         ],
         "miniature-view": [
           "bool",
+          false
+        ],
+        "numbering": [
+          "bool",
           true
         ]
       }
@@ -155,7 +159,7 @@
         ],
         "include-all-workspaces": [
           "bool",
-          true
+          false
         ],
         "include-all-monitors": [
           "bool",

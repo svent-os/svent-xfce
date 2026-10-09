@@ -8,7 +8,7 @@ Rules-Requires-Root: no
 
 Package: svent-xfce
 Architecture: all
-Depends: sv-icon-theme (>= 0.1.2), svent-core, svent-artwork, xfce4, xfce4-terminal, xterm, xcape,
+Depends: sv-icon-theme (>= 0.1.2), svent-core, svent-artwork, xfce4, xfce4-terminal, xterm, xcape, dbus-daemon,
  xfdesktop4, xfce4-settings, xfce4-genmon-plugin, xfce4-whiskermenu-plugin, firefox-esr, elementary-xfce-icon-theme, x11-xserver-utils, xfce4-pulseaudio-plugin, xfce4-power-manager,
  feh, fonts-jetbrains-mono, greybird-gtk-theme, xclip, iproute2,
  xdg-user-dirs, librsvg2-common, procps, python3, python3-gi, gir1.2-xfconf-0, ${misc:Depends}
