@@ -69,7 +69,7 @@ def main():
     if os.environ.get("DISPLAY"):
         import re
         try:
-            result = subprocess.run(["xrandr", "--query"], capture_output=True, text=True, timeout=3)
+            result = subprocess.run(["xrandr", "--current"], capture_output=True, text=True, timeout=1)
             connected = []
             for line in result.stdout.splitlines():
                 match = re.match(r"(\S+) connected(?: primary)? (\d+)x(\d+)[+-]", line)
@@ -80,6 +80,36 @@ def main():
         except (OSError, subprocess.TimeoutExpired):
             pass
     prepare(config, monitors)
+    if os.environ.get("DISPLAY"):
+        path = config / "xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml"
+        root = ET.parse(path).getroot()
+        images = [node.get("value") for node in root.findall(".//property[@name='last-image']") if node.get("value") and Path(node.get("value")).is_file()]
+        if images:
+            try:
+                subprocess.run(["feh", "--no-fehbg", "--bg-fill", images[0]], check=False, timeout=2)
+            except (OSError, subprocess.TimeoutExpired):
+                pass
+        import gi
+        gi.require_version("Xfconf", "0")
+        from gi.repository import Xfconf
+        if Xfconf.init():
+            channel = Xfconf.Channel.get("xfce4-desktop")
+            def apply(parent, prefix=""):
+                for node in parent.findall("property"):
+                    key = prefix + "/" + node.attrib["name"]
+                    kind = node.get("type")
+                    value = node.get("value")
+                    if kind == "string":
+                        channel.set_string(key, value)
+                    elif kind == "bool":
+                        channel.set_bool(key, value == "true")
+                    elif kind == "int":
+                        channel.set_int(key, int(value))
+                    elif kind == "uint":
+                        channel.set_uint(key, int(value))
+                    apply(node, key)
+            apply(root)
+            Xfconf.shutdown()
 
 if __name__ == "__main__":
     main()

@@ -4,20 +4,22 @@ import os
 import subprocess
 import xml.etree.ElementTree as ET
 from pathlib import Path
+import gi
 
-PROFILE = "0.5.4"
+gi.require_version("Xfconf", "0")
+from gi.repository import Xfconf
+
+PROFILE = "0.5.6"
 CHANNEL = "xfce4-keyboard-shortcuts"
 
 def query(*args, check=True):
     return subprocess.run(["xfconf-query", "-c", CHANNEL, *args], check=check, capture_output=True, text=True, timeout=5)
 
 def set_property(key, kind, value):
-    exists = query("-p", key, check=False).returncode == 0
-    args = ["-p", key]
-    if not exists:
-        args.append("-n")
-    args += ["-t", kind, "-s", value]
-    query(*args)
+    channel = Xfconf.Channel.get(CHANNEL)
+    success = channel.set_bool(key, value.lower() == "true") if kind == "bool" else channel.set_string(key, value)
+    if not success:
+        raise RuntimeError("Cannot set shortcut: " + key)
 
 def bindings(root):
     result = []
@@ -52,21 +54,24 @@ def main():
         if len(parts) == 2 and parts[0].startswith("/"):
             existing[parts[0]] = parts[1].strip()
     matches = all(existing.get(key, "").lower() == value.lower() if kind == "bool" else existing.get(key) == value for key, kind, value in wanted)
-    changed = options.force or existing.get(root_key) != PROFILE or not matches or "/commands/custom/Super_L" in existing
+    changed = existing.get(root_key) != PROFILE or not matches or "/commands/custom/Super_L" in existing
     if changed:
+        if not Xfconf.init():
+            raise RuntimeError("Cannot initialize keyboard shortcut settings")
         state = Path(os.environ.get("XDG_STATE_HOME", str(Path.home() / ".local/state"))) / "svent-xfce"
         state.mkdir(parents=True, exist_ok=True)
         backup = state / ("shortcuts-before-" + PROFILE + ".txt")
         if not backup.exists():
             backup.write_text(snapshot, encoding="utf-8")
         for provider in ("commands", "xfwm4"):
-            query("-p", f"/{provider}/custom", "-r", "-R", check=False)
+            Xfconf.Channel.get(CHANNEL).reset_property(f"/{provider}/custom", True)
         for key, kind, value in wanted:
             set_property(key, kind, value)
         set_property(root_key, "string", PROFILE)
+        Xfconf.shutdown()
     daemon = subprocess.run(["pgrep", "-u", str(os.getuid()), "-x", "xfsettingsd"], capture_output=True)
-    if daemon.returncode == 1 or options.force:
-        subprocess.run(["xfsettingsd", "--replace"], check=True, timeout=5)
+    if daemon.returncode == 1 or changed or options.force:
+        subprocess.Popen(["xfsettingsd", "--replace"], stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
     if changed:
         print("Svent shortcuts activated: " + PROFILE)
 

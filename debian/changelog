@@ -1,3 +1,11 @@
+svent-xfce (0.5.6) unstable; urgency=medium
+
+  * Activate and regrab keyboard shortcuts automatically on login.
+  * Center task buttons and paint the background before session startup.
+  * Select the shared Svent icon theme.
+
+ -- z1rov <fabian@zirov.net>  Fri, 09 Oct 2026 19:00:00 -0500
+
 svent-xfce (0.5.5) unstable; urgency=medium
 
   * Restore window buttons so minimized applications remain recoverable.

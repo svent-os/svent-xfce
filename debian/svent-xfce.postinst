@@ -16,6 +16,13 @@ shutil.copytree("/etc/skel/.config/xfce4", destination,
                 dirs_exist_ok=True, ignore=preserve_background)
 PY
     chmod 0755 "$home/.config/xfce4/xinitrc"
+    session_backup="$home/.local/state/svent-xfce/session-before-0.5.6-$(date +%s)"
+    for session in "$home"/.cache/sessions/xfce4-session-*; do
+      [ -f "$session" ] || continue
+      mkdir -p "$session_backup"
+      mv "$session" "$session_backup/"
+    done
+    [ ! -d "$session_backup" ] || chown -R "$owner" "$session_backup"
     [ -f "$home/.config/svent/wallpaper.choice" ] || echo "orca-dark" > "$home/.config/svent/wallpaper.choice"
     cp -a /etc/skel/.Xresources "$home/.Xresources"
     chown "$owner" "$home/.Xresources" 2>/dev/null || true

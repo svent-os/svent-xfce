@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
 Name=Svent Keyboard Shortcuts
-Exec=python3 /usr/share/svent/xfce-panel/activate-shortcuts.py
+Exec=python3 /usr/share/svent/xfce-panel/activate-shortcuts.py --force
 OnlyShowIn=XFCE;
 NoDisplay=true
