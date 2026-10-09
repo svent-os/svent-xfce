@@ -1,0 +1,43 @@
+#!/usr/bin/env python3
+import os
+import shlex
+import shutil
+import subprocess
+import sys
+from pathlib import Path
+
+def tool_command(arguments):
+    args = list(arguments)
+    if len(args) == 1:
+        args = shlex.split(args[0])
+    if args and Path(args[0]).name == "svent-run":
+        args = args[1:]
+    return args
+
+def main():
+    arguments = sys.argv[1:]
+    inside = bool(arguments and arguments[0] == "--inside")
+    if inside:
+        command = arguments[1:]
+        if command:
+            print("$ " + shlex.join(command), flush=True)
+            try:
+                status = subprocess.run(command).returncode
+            except OSError as error:
+                print(str(error), file=sys.stderr)
+                status = 127
+            print(f"\n[svent] Tool exited ({status}). The shell remains open.\n", flush=True)
+        shell = os.environ.get("SHELL", "/bin/bash")
+        if not shutil.which(shell):
+            shell = "/bin/bash"
+        os.execv(shell, [shell, "-i"])
+        return
+    command = tool_command(arguments)
+    if not command:
+        os.execvp("xfce4-terminal", ["xfce4-terminal"])
+        return
+    script = str(Path(__file__).resolve())
+    os.execvp("xfce4-terminal", ["xfce4-terminal", "--disable-server", "--title", "Svent Tools", "--execute", "python3", script, "--inside", *command])
+
+if __name__ == "__main__":
+    main()

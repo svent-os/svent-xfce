@@ -23,3 +23,8 @@ XfdesktopIconView.view.label, XfdesktopIconView.view.label:backdrop { background
 XfdesktopIconView.view:selected, XfdesktopIconView.view:selected:backdrop { background-color: rgba(169, 71, 73, 0.65); color: #ffffff; }
 XfdesktopIconView.view.label:selected, XfdesktopIconView.view.label:selected:backdrop { background-color: #873c3b; color: #ffffff; }
 XfdesktopIconView.view .rubberband { background-color: rgba(255, 98, 102, 0.15); border: 1px solid #ff6266; }
+
+menu menuitem:hover, menu menuitem:selected { background-image: none; background-color: #873c3b; color: #ffffff; }
+menu menuitem:hover label, menu menuitem:selected label { color: #ffffff; }
+treeview.view:selected { background-color: #873c3b; color: #ffffff; }
+selection { background-color: #a94749; color: #ffffff; }

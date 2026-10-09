@@ -4,7 +4,7 @@
     <property name="theme" type="string" value="Greybird-dark" />
     <property name="title_font" type="string" value="Sans Bold 9" />
     <property name="button_layout" type="string" value="O|HMC" />
-    <property name="workspace_count" type="int" value="3" />
+    <property name="workspace_count" type="int" value="5" />
     <property name="click_to_focus" type="bool" value="true" />
     <property name="use_compositing" type="bool" value="true" />
     <property name="focus_follows_mouse" type="bool" value="false" />
@@ -13,6 +13,8 @@
       <value type="string" value="1" />
       <value type="string" value="2" />
       <value type="string" value="3" />
+      <value type="string" value="4" />
+      <value type="string" value="5" />
     </property>
   </property>
 </channel>

@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
+import argparse
 import os
 import subprocess
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-PROFILE = "0.5.3"
+PROFILE = "0.5.4"
 CHANNEL = "xfce4-keyboard-shortcuts"
 
 def query(*args, check=True):
@@ -32,28 +33,42 @@ def bindings(root):
 def main():
     if not os.environ.get("DISPLAY"):
         raise RuntimeError("An XFCE X11 session is required")
-    config = Path(os.environ.get("XDG_CONFIG_HOME", str(Path.home() / ".config")))
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--force", action="store_true")
+    parser.add_argument("--diagnose", action="store_true")
+    options = parser.parse_args()
+    if options.diagnose:
+        for command in (["xmodmap", "-pm"], ["pgrep", "-a", "xfwm4"], ["pgrep", "-a", "xfsettingsd"]):
+            subprocess.run(command, check=False)
+        print(query("-l", "-v").stdout)
+        return
     source = Path("/etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml")
     wanted = bindings(ET.parse(source).getroot())
     root_key = "/svent/shortcuts-profile"
-    current = query("-p", root_key, check=False)
-    marker = current.returncode == 0 and current.stdout.strip() == PROFILE
-    sentinel = query("-p", "/xfwm4/custom/<Super>Left", check=False)
-    old_super = query("-p", "/commands/custom/Super_L", check=False)
-    if not (marker and sentinel.stdout.strip() == "tile_left_key" and old_super.returncode != 0):
+    snapshot = query("-l", "-v").stdout
+    existing = {}
+    for line in snapshot.splitlines():
+        parts = line.strip().split(None, 1)
+        if len(parts) == 2 and parts[0].startswith("/"):
+            existing[parts[0]] = parts[1].strip()
+    matches = all(existing.get(key, "").lower() == value.lower() if kind == "bool" else existing.get(key) == value for key, kind, value in wanted)
+    changed = options.force or existing.get(root_key) != PROFILE or not matches or "/commands/custom/Super_L" in existing
+    if changed:
         state = Path(os.environ.get("XDG_STATE_HOME", str(Path.home() / ".local/state"))) / "svent-xfce"
         state.mkdir(parents=True, exist_ok=True)
         backup = state / ("shortcuts-before-" + PROFILE + ".txt")
         if not backup.exists():
-            backup.write_text(query("-l", "-v").stdout, encoding="utf-8")
+            backup.write_text(snapshot, encoding="utf-8")
         for provider in ("commands", "xfwm4"):
             query("-p", f"/{provider}/custom", "-r", "-R", check=False)
         for key, kind, value in wanted:
             set_property(key, kind, value)
         set_property(root_key, "string", PROFILE)
     daemon = subprocess.run(["pgrep", "-u", str(os.getuid()), "-x", "xfsettingsd"], capture_output=True)
-    if daemon.returncode == 1:
-        subprocess.run(["xfsettingsd"], check=True, timeout=5)
+    if daemon.returncode == 1 or options.force:
+        subprocess.run(["xfsettingsd", "--replace"], check=True, timeout=5)
+    if changed:
+        print("Svent shortcuts activated: " + PROFILE)
 
 if __name__ == "__main__":
     main()
