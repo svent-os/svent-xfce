@@ -24,7 +24,12 @@ def prepare(config, monitors, wallpaper_dir=WALLPAPERS):
         tree = ET.ElementTree(ET.Element("channel", name="xfce4-desktop", version="1.0"))
     root = tree.getroot()
     icons = set_value(root, "desktop-icons", "empty", None)
-    set_value(icons, "style", "int", "0")
+    set_value(icons, "style", "int", "2")
+    set_value(icons, "icon-size", "uint", "40")
+    set_value(icons, "single-click", "bool", "false")
+    files = set_value(icons, "file-icons", "empty", None)
+    for name in ("show-home", "show-filesystem", "show-trash", "show-removable"):
+        set_value(files, name, "bool", "true")
     backdrop = set_value(root, "backdrop", "empty", None)
     set_value(backdrop, "single-workspace-mode", "bool", "true")
     set_value(backdrop, "single-workspace-number", "int", "0")

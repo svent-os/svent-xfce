@@ -1,3 +1,11 @@
+svent-xfce (0.5.2) unstable; urgency=medium
+
+  * Restore file desktop icons and double-click activation.
+  * Combine the network icon and address into one clickable IP control.
+  * Improve workspace contrast and add window and workspace shortcuts.
+
+ -- z1rov <fabian@zirov.net>  Fri, 09 Oct 2026 15:00:00 -0500
+
 svent-xfce (0.5.1) unstable; urgency=medium
 
   * Correct Genmon polling to 2000 milliseconds and keep clickable IP output.

@@ -10,3 +10,10 @@
 #whiskermenu-window treeview:selected { background-color: #873c3b; color: white; }
 #whiskermenu-window button { background-image: none; background-color: transparent; color: #e6e7e8; border: 0; border-radius: 4px; padding: 7px 10px; }
 #whiskermenu-window button:hover, #whiskermenu-window button:checked { background-color: #873c3b; }
+
+.xfce4-panel wnck-pager { background-color: #424c58; color: #d8e0e8; border: 1px solid #657181; border-radius: 3px; }
+.xfce4-panel wnck-pager:hover { background-color: #607082; }
+.xfce4-panel wnck-pager:selected { background-color: #a94749; color: #ffffff; }
+#pager-906 button { background-color: #424c58; border: 1px solid #657181; color: #d8e0e8; margin: 2px; }
+#pager-906 button:checked { background-color: #a94749; border-color: #ff6266; color: #ffffff; }
+#genmon-915 button { padding: 2px 5px; border-radius: 4px; }
