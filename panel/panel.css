@@ -15,8 +15,9 @@
 .xfce4-panel wnck-pager { background-color: #424c58; color: #d8e0e8; border: 1px solid #657181; border-radius: 3px; }
 .xfce4-panel wnck-pager:hover { background-color: #607082; }
 .xfce4-panel wnck-pager:selected { background-color: #a94749; color: #ffffff; }
-#pager-906 button { background-color: #424c58; border: 1px solid #657181; color: #d8e0e8; margin: 2px; }
+#pager-906 button { background-color: #424c58; border: 1px solid #657181; color: #d8e0e8; margin: 2px; padding: 0; min-width: 40px; min-height: 26px; }
 #pager-906 button:checked { background-color: #a94749; border-color: #ff6266; color: #ffffff; }
+#pager-906 button label { opacity: 0; font-size: 0px; text-shadow: none; }
 #genmon-915 button { padding: 2px 5px; border-radius: 4px; }
 
 XfdesktopIconView.view, XfdesktopIconView.view:backdrop { background-color: transparent; color: #ffffff; }
