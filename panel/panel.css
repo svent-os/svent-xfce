@@ -28,3 +28,8 @@ menu menuitem:hover, menu menuitem:selected { background-image: none; background
 menu menuitem:hover label, menu menuitem:selected label { color: #ffffff; }
 treeview.view:selected { background-color: #873c3b; color: #ffffff; }
 selection { background-color: #a94749; color: #ffffff; }
+
+.xfce4-panel .tasklist { -XfceTasklist-minimized-icon-lucency: 100; }
+.xfce4-panel .tasklist button { padding: 2px 6px; margin: 2px 1px; border: 1px solid #48515a; background-color: #272e35; }
+.xfce4-panel .tasklist button:hover { background-color: #424c58; border-color: #ff6266; }
+.xfce4-panel .tasklist button:checked { background-color: #873c3b; border-color: #ff6266; }

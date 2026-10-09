@@ -1,3 +1,11 @@
+svent-xfce (0.5.5) unstable; urgency=medium
+
+  * Restore window buttons so minimized applications remain recoverable.
+  * Show individual windows across workspaces and monitors.
+  * Keep minimized icons visible and highlight the active window in red.
+
+ -- z1rov <fabian@zirov.net>  Fri, 09 Oct 2026 18:00:00 -0500
+
 svent-xfce (0.5.4) unstable; urgency=medium
 
   * Use red menu highlights and five workspaces.

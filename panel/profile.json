@@ -138,6 +138,48 @@
       }
     },
     {
+      "id": 908,
+      "name": "tasklist",
+      "settings": {
+        "show-handle": [
+          "bool",
+          false
+        ],
+        "show-labels": [
+          "bool",
+          false
+        ],
+        "grouping": [
+          "uint",
+          0
+        ],
+        "include-all-workspaces": [
+          "bool",
+          true
+        ],
+        "include-all-monitors": [
+          "bool",
+          true
+        ],
+        "show-only-minimized": [
+          "bool",
+          false
+        ],
+        "switch-workspace-on-unminimize": [
+          "bool",
+          true
+        ],
+        "show-wireframes": [
+          "bool",
+          false
+        ],
+        "sort-order": [
+          "uint",
+          1
+        ]
+      }
+    },
+    {
       "id": 909,
       "name": "separator",
       "settings": {
