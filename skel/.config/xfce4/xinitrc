@@ -2,4 +2,6 @@
 unset LC_ALL
 export LANGUAGE=en
 export LC_MESSAGES=C
+python3 /usr/share/svent/xfce-panel/prepare-desktop.py
+[ ! -r "$HOME/.Xresources" ] || xrdb -merge "$HOME/.Xresources"
 exec /etc/xdg/xfce4/xinitrc "$@"

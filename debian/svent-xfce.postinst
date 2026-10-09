@@ -17,6 +17,9 @@ shutil.copytree("/etc/skel/.config/xfce4", destination,
 PY
     chmod 0755 "$home/.config/xfce4/xinitrc"
     [ -f "$home/.config/svent/wallpaper.choice" ] || echo "orca-dark" > "$home/.config/svent/wallpaper.choice"
+    cp -a /etc/skel/.Xresources "$home/.Xresources"
+    chown "$owner" "$home/.Xresources" 2>/dev/null || true
+    env -u DISPLAY python3 /usr/share/svent/xfce-panel/prepare-desktop.py --config "$home/.config"
     mkdir -p "$home/.config/gtk-3.0"
     css="$home/.config/gtk-3.0/gtk.css"
     python3 - "$css" <<'PY'

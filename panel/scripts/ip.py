@@ -11,7 +11,7 @@ from network import read_ip, select_network
 addresses = read_ip("addr", "show")
 links = {item.get("ifname"): item for item in read_ip("-d", "link", "show")}
 devices = [dict(links.get(item.get("ifname"), {}), **item) for item in addresses]
-selected = select_network(devices, read_ip("-4", "route", "show", "default"), read_ip("-6", "route", "show", "default"), os.environ.get("POLYBAR_INTERFACE", ""))
+selected = select_network(devices, read_ip("-4", "route", "show", "default"), read_ip("-6", "route", "show", "default"), os.environ.get("SVENT_INTERFACE", os.environ.get("POLYBAR_INTERFACE", "")))
 value = selected["ip"] if selected else "No IP"
 if "--copy" in sys.argv:
     if not selected:

@@ -1,7 +1,12 @@
 .xfce4-panel { background-color: #1a1e21; color: #e6e7e8; border: 0; font-family: Sans; font-size: 10pt; }
-.xfce4-panel button { background: transparent; color: #e6e7e8; border: 1px solid transparent; border-radius: 0; box-shadow: none; padding: 2px 6px; }
+.xfce4-panel button { background-image: none; background-color: transparent; color: #e6e7e8; border: 1px solid transparent; border-radius: 3px; box-shadow: none; padding: 2px 6px; }
 .xfce4-panel button:hover { background-color: #30363b; }
 .xfce4-panel button:checked, .xfce4-panel button:active { background-color: #30363b; border-color: #ff6266; }
-.xfce4-panel menu { background-color: #20262a; color: #e6e7e8; }
-.xfce4-panel menuitem { padding: 8px 12px; }
-.xfce4-panel menuitem:hover { background-color: #873c3b; color: white; }
+#whiskermenu-button { padding: 2px 10px; }
+#whiskermenu-window { background-color: #20262a; color: #e6e7e8; border: 1px solid #39424a; border-radius: 6px; }
+#whiskermenu-window entry { background-image: none; background-color: #15191d; color: #e6e7e8; border: 1px solid #48515a; border-radius: 5px; padding: 8px; margin: 8px; }
+#whiskermenu-window entry:focus { border-color: #ff6266; }
+#whiskermenu-window treeview, #whiskermenu-window scrolledwindow { background-color: #20262a; color: #e6e7e8; }
+#whiskermenu-window treeview:selected { background-color: #873c3b; color: white; }
+#whiskermenu-window button { background-image: none; background-color: transparent; color: #e6e7e8; border: 0; border-radius: 4px; padding: 7px 10px; }
+#whiskermenu-window button:hover, #whiskermenu-window button:checked { background-color: #873c3b; }

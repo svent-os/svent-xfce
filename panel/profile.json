@@ -53,12 +53,8 @@
   "plugins": [
     {
       "id": 901,
-      "name": "applicationsmenu",
+      "name": "whiskermenu",
       "settings": {
-        "show-button-title": [
-          "bool",
-          true
-        ],
         "button-title": [
           "string",
           "Applications"
@@ -67,9 +63,17 @@
           "string",
           "applications-other"
         ],
-        "show-generic-names": [
+        "show-button-title": [
           "bool",
-          false
+          true
+        ],
+        "show-button-icon": [
+          "bool",
+          true
+        ],
+        "button-single-row": [
+          "bool",
+          true
         ]
       }
     },
@@ -157,7 +161,7 @@
         ],
         "update-period": [
           "int",
-          2
+          2000
         ],
         "enable-single-row": [
           "bool",

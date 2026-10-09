@@ -3,11 +3,11 @@
   <property name="commands" type="empty">
     <property name="default" type="empty"/>
     <property name="custom" type="empty">
-      <property name="&lt;Primary&gt;&lt;Alt&gt;t" type="string" value="exo-open --launch TerminalEmulator"/>
-      <property name="&lt;Super&gt;Return" type="string" value="exo-open --launch TerminalEmulator"/>
-      <property name="&lt;Super&gt;d" type="string" value="xfce4-appfinder"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;t" type="string" value="xfce4-terminal"/>
+      <property name="&lt;Super&gt;Return" type="string" value="xfce4-terminal"/>
+      <property name="&lt;Super&gt;d" type="string" value="xfce4-popup-whiskermenu"/>
       <property name="&lt;Super&gt;e" type="string" value="thunar"/>
-      <property name="Super_L" type="string" value="xfce4-popup-applicationsmenu"/>
+      <property name="Super_L" type="string" value="xfce4-popup-whiskermenu"/>
       <property name="override" type="bool" value="true"/>
     </property>
   </property>

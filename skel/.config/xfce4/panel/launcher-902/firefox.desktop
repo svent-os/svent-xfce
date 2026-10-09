@@ -1,6 +1,7 @@
 [Desktop Entry]
 Type=Application
-Name=Web Browser
-Icon=web-browser
-Exec=python3 /usr/share/svent/xfce-panel/scripts/launch-app.py firefox
+Name=Firefox ESR
+Icon=firefox-esr
+Exec=firefox-esr %u
 Terminal=false
+StartupNotify=true

@@ -9,13 +9,13 @@ PRIORITY = {"vpn": 0, "ethernet": 1, "wifi": 2, "cellular": 3, "bridge": 3, "vir
 
 def read_ip(*args):
     try:
-        return json.loads(subprocess.check_output(["ip", "-j", *args], stderr=subprocess.DEVNULL))
-    except (OSError, subprocess.CalledProcessError, ValueError):
+        return json.loads(subprocess.check_output(["ip", "-j", *args], stderr=subprocess.DEVNULL, timeout=2))
+    except (OSError, subprocess.CalledProcessError, subprocess.TimeoutExpired, ValueError):
         return []
 
 def classify(device):
     name = device.get("ifname", "").lower()
-    kind = device.get("linkinfo", {}).get("info_kind", "").lower()
+    kind = (device.get("linkinfo") or {}).get("info_kind", "").lower()
     if kind in {"wireguard", "tun", "tap", "vti", "vti6", "xfrm"} or name.startswith(("tun", "tap", "wg", "vpn", "tailscale", "zt", "utun")):
         return "vpn"
     if device.get("wireless") or Path("/sys/class/net", name, "wireless").exists() or name.startswith(("wl", "wlan")):

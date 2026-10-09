@@ -1,3 +1,12 @@
+svent-xfce (0.5.1) unstable; urgency=medium
+
+  * Correct Genmon polling to 2000 milliseconds and keep clickable IP output.
+  * Prepare real monitor wallpaper properties before the XFCE session starts.
+  * Use Firefox ESR, searchable Whisker menu and a styled XFCE terminal.
+  * Use a clean desktop without icon selection and explicit compositing.
+
+ -- z1rov <fabian@zirov.net>  Fri, 09 Oct 2026 13:00:00 -0500
+
 svent-xfce (0.5.0) unstable; urgency=medium
 
   * Use English session messages and remove explanatory code comments.

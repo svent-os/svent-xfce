@@ -1,5 +1,6 @@
 Command=python3 /usr/share/svent/xfce-panel/scripts/ip.py
 UseLabel=0
 Text=
-UpdatePeriod=2
+UpdatePeriod=2000
+EnableSingleRow=1
 Font=Sans 10

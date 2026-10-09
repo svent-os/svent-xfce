@@ -12,3 +12,5 @@ panel/scripts usr/share/svent/xfce-panel/
 panel/icons usr/share/svent/xfce-panel/
 panel/assets usr/share/svent/xfce-panel/
 share/applications/svent-xfce-backgrounds.desktop usr/share/applications/
+panel/prepare-desktop.py usr/share/svent/xfce-panel/
+skel/.Xresources etc/skel/
