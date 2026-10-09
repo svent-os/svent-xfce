@@ -14,7 +14,7 @@
     ],
     "size": [
       "uint",
-      34
+      36
     ],
     "nrows": [
       "uint",
@@ -39,22 +39,39 @@
     "background-rgba": [
       "double",
       [
-        0.047058823529411764,
-        0.054901960784313725,
-        0.06666666666666667,
+        0.1,
+        0.12,
+        0.13,
         1.0
       ]
     ],
     "icon-size": [
       "uint",
-      20
+      24
     ]
   },
   "plugins": [
     {
       "id": 901,
-      "name": "menu",
-      "settings": {}
+      "name": "applicationsmenu",
+      "settings": {
+        "show-button-title": [
+          "bool",
+          true
+        ],
+        "button-title": [
+          "string",
+          "Applications"
+        ],
+        "button-icon": [
+          "string",
+          "applications-other"
+        ],
+        "show-generic-names": [
+          "bool",
+          false
+        ]
+      }
     },
     {
       "id": 902,
@@ -75,7 +92,7 @@
         "items": [
           "string",
           [
-            "tor.desktop"
+            "files.desktop"
           ]
         ]
       }
@@ -112,35 +129,7 @@
         ],
         "miniature-view": [
           "bool",
-          false
-        ]
-      }
-    },
-    {
-      "id": 907,
-      "name": "separator",
-      "settings": {
-        "style": [
-          "uint",
-          0
-        ]
-      }
-    },
-    {
-      "id": 908,
-      "name": "tasklist",
-      "settings": {
-        "show-handle": [
-          "bool",
-          false
-        ],
-        "show-labels": [
-          "bool",
-          false
-        ],
-        "grouping": [
-          "uint",
-          1
+          true
         ]
       }
     },
@@ -168,7 +157,7 @@
         ],
         "update-period": [
           "int",
-          15000
+          2
         ],
         "enable-single-row": [
           "bool",
@@ -177,6 +166,10 @@
         "font": [
           "string",
           "Sans 10"
+        ],
+        "command": [
+          "string",
+          "python3 /usr/share/svent/xfce-panel/scripts/ip.py"
         ]
       }
     },
@@ -224,40 +217,15 @@
         ],
         "digital-format": [
           "string",
-          "%a %d %b  %H:%M"
+          "%H:%M"
         ],
         "digital-time-format": [
           "string",
-          "%a %d %b  %H:%M"
+          "%H:%M"
         ],
         "digital-time-font": [
           "string",
           "Sans 10"
-        ]
-      }
-    },
-    {
-      "id": 914,
-      "name": "actions",
-      "settings": {
-        "appearance": [
-          "uint",
-          1
-        ],
-        "items": [
-          "string",
-          [
-            "+lock-screen",
-            "+suspend",
-            "-hibernate",
-            "-hybrid-sleep",
-            "+separator",
-            "+shutdown",
-            "+restart",
-            "+separator",
-            "-logout",
-            "+logout-dialog"
-          ]
         ]
       }
     }

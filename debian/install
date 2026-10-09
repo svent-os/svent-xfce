@@ -1,11 +1,14 @@
 share/xdg/autostart/svent-wallpaper.desktop etc/xdg/autostart/
 share/xdg/autostart/svent-xfce-panel.desktop etc/xdg/autostart/
 skel/.config/xfce4 etc/skel/.config/
+skel/.config/gtk-3.0 etc/skel/.config/
 bin/svent-xfce-wallpaper usr/bin/
 bin/svent-xfce-firstrun usr/bin/
 panel/apply.py usr/share/svent/xfce-panel/
+panel/generate.py usr/share/svent/xfce-panel/
 panel/profile.json usr/share/svent/xfce-panel/
 panel/panel.css usr/share/svent/xfce-panel/
 panel/scripts usr/share/svent/xfce-panel/
 panel/icons usr/share/svent/xfce-panel/
 panel/assets usr/share/svent/xfce-panel/
+share/applications/svent-xfce-backgrounds.desktop usr/share/applications/

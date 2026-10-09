@@ -1,3 +1,12 @@
+svent-xfce (0.5.0) unstable; urgency=medium
+
+  * Use English session messages and remove explanatory code comments.
+  * Deploy the complete Applications panel before login from one profile.
+  * Match the compact XFCE layout; retain priority IP selection and copying.
+  * Preserve native background choices and use the shared artwork directory.
+
+ -- z1rov <fabian@zirov.net>  Fri, 09 Oct 2026 12:00:00 -0500
+
 svent-xfce (0.4.1) unstable; urgency=medium
 
   * Apply the Svent panel, theme and wallpaper for root too (SventOS runs as

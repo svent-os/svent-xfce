@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=File Manager
+Icon=system-file-manager
+Exec=python3 /usr/share/svent/xfce-panel/scripts/launch-app.py files
+Terminal=false

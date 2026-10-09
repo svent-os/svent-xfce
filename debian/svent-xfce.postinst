@@ -1,15 +1,37 @@
 #!/bin/sh
 set -e
 if [ "$1" = "configure" ]; then
-  # Deploy the Svent XFCE config to root and every existing user, so all
-  # users share the same defaults and reinstalls propagate updates. New users
-  # get the same files from /etc/skel. The panel is re-applied on next login.
   deploy() {
     home="$1"; owner="$2"
     [ -d "$home" ] || return 0
     mkdir -p "$home/.config/xfce4" "$home/.config/svent"
-    cp -a /etc/skel/.config/xfce4/. "$home/.config/xfce4/"
+    python3 - "$home/.config/xfce4" <<'PY'
+import shutil
+import sys
+from pathlib import Path
+destination = Path(sys.argv[1])
+def preserve_background(folder, names):
+    return ["xfce4-desktop.xml"] if "xfce4-desktop.xml" in names and (destination / "xfconf/xfce-perchannel-xml/xfce4-desktop.xml").exists() else []
+shutil.copytree("/etc/skel/.config/xfce4", destination,
+                dirs_exist_ok=True, ignore=preserve_background)
+PY
+    chmod 0755 "$home/.config/xfce4/xinitrc"
     [ -f "$home/.config/svent/wallpaper.choice" ] || echo "orca-dark" > "$home/.config/svent/wallpaper.choice"
+    mkdir -p "$home/.config/gtk-3.0"
+    css="$home/.config/gtk-3.0/gtk.css"
+    python3 - "$css" <<'PY'
+import re
+import sys
+from pathlib import Path
+p = Path(sys.argv[1])
+s = p.read_text() if p.exists() else ""
+s = re.sub(r"/\* BEGIN Z1ROV DARK PANEL \*/.*?/\* END Z1ROV DARK PANEL \*/\n?", "", s, flags=re.S)
+line = '@import url("../xfce4/panel/svent-panel.css");'
+s = s.replace(line, "")
+s = line + "\n" + s.lstrip()
+p.write_text(s, encoding="utf-8")
+PY
+    chown "$owner" "$home/.config/gtk-3.0" "$css" 2>/dev/null || true
     chown -R "$owner" "$home/.config/xfce4" "$home/.config/svent" 2>/dev/null || true
     rm -f "$home/.local/state/svent-xfce-panel.done" 2>/dev/null || true
   }

@@ -1,8 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=Svent Wallpaper
-Comment=Apply the Svent wallpaper with proportional fill
+Comment=Initialize the shared wallpaper without overriding XFCE choices
 Exec=svent-xfce-wallpaper
 OnlyShowIn=XFCE;
-X-GNOME-Autostart-enabled=true
 NoDisplay=true

@@ -1,60 +1,95 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <channel name="xfce4-panel" version="1.0">
-  <property name="configver" type="int" value="2"/>
+  <property name="configver" type="int" value="2" />
   <property name="panels" type="array">
-    <value type="int" value="1"/>
-    <property name="dark-mode" type="bool" value="true"/>
+    <value type="int" value="1" />
+    <property name="dark-mode" type="bool" value="true" />
     <property name="panel-1" type="empty">
-      <property name="position" type="string" value="p=6;x=0;y=0"/>
-      <property name="length" type="uint" value="100"/>
-      <property name="position-locked" type="bool" value="true"/>
-      <property name="icon-size" type="uint" value="16"/>
-      <property name="size" type="uint" value="28"/>
-      <property name="plugin-ids" type="array">
-        <value type="int" value="1"/>
-        <value type="int" value="2"/>
-        <value type="int" value="3"/>
-        <value type="int" value="4"/>
-        <value type="int" value="5"/>
-        <value type="int" value="6"/>
-      </property>
-      <property name="background-style" type="uint" value="1"/>
+      <property name="position" type="string" value="p=6;x=0;y=0" />
+      <property name="position-locked" type="bool" value="true" />
+      <property name="mode" type="uint" value="0" />
+      <property name="size" type="uint" value="36" />
+      <property name="nrows" type="uint" value="1" />
+      <property name="length" type="uint" value="100" />
+      <property name="length-adjust" type="bool" value="false" />
+      <property name="autohide-behavior" type="uint" value="0" />
+      <property name="background-style" type="uint" value="1" />
       <property name="background-rgba" type="array">
-        <value type="double" value="0.098039"/>
-        <value type="double" value="0.113725"/>
-        <value type="double" value="0.133333"/>
-        <value type="double" value="0.950000"/>
+        <value type="double" value="0.1" />
+        <value type="double" value="0.12" />
+        <value type="double" value="0.13" />
+        <value type="double" value="1.0" />
+      </property>
+      <property name="icon-size" type="uint" value="24" />
+      <property name="plugin-ids" type="array">
+        <value type="int" value="901" />
+        <value type="int" value="902" />
+        <value type="int" value="903" />
+        <value type="int" value="904" />
+        <value type="int" value="905" />
+        <value type="int" value="906" />
+        <value type="int" value="909" />
+        <value type="int" value="915" />
+        <value type="int" value="910" />
+        <value type="int" value="911" />
+        <value type="int" value="912" />
+        <value type="int" value="913" />
       </property>
     </property>
   </property>
   <property name="plugins" type="empty">
-    <property name="plugin-1" type="string" value="applicationsmenu">
-      <property name="show-button-title" type="bool" value="true"/>
-      <property name="button-title" type="string" value="Svent"/>
-      <property name="show-generic-names" type="bool" value="false"/>
+    <property name="plugin-901" type="string" value="applicationsmenu">
+      <property name="show-button-title" type="bool" value="true" />
+      <property name="button-title" type="string" value="Applications" />
+      <property name="button-icon" type="string" value="applications-other" />
+      <property name="show-generic-names" type="bool" value="false" />
     </property>
-    <property name="plugin-2" type="string" value="tasklist">
-      <property name="grouping" type="uint" value="1"/>
-    </property>
-    <property name="plugin-3" type="string" value="separator">
-      <property name="expand" type="bool" value="true"/>
-      <property name="style" type="uint" value="0"/>
-    </property>
-    <property name="plugin-4" type="string" value="systray">
-      <property name="square-icons" type="bool" value="true"/>
-    </property>
-    <property name="plugin-5" type="string" value="clock">
-      <property name="mode" type="uint" value="2"/>
-      <property name="digital-format" type="string" value="%a %d %b, %R"/>
-    </property>
-    <property name="plugin-6" type="string" value="actions">
-      <property name="appearance" type="uint" value="0"/>
+    <property name="plugin-902" type="string" value="launcher">
       <property name="items" type="array">
-        <value type="string" value="+lock-screen"/>
-        <value type="string" value="+logout"/>
-        <value type="string" value="+restart"/>
-        <value type="string" value="+shutdown"/>
+        <value type="string" value="firefox.desktop" />
       </property>
+    </property>
+    <property name="plugin-903" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="files.desktop" />
+      </property>
+    </property>
+    <property name="plugin-904" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="terminal.desktop" />
+      </property>
+    </property>
+    <property name="plugin-905" type="string" value="separator">
+      <property name="style" type="uint" value="0" />
+    </property>
+    <property name="plugin-906" type="string" value="pager">
+      <property name="rows" type="uint" value="1" />
+      <property name="miniature-view" type="bool" value="true" />
+    </property>
+    <property name="plugin-909" type="string" value="separator">
+      <property name="expand" type="bool" value="true" />
+      <property name="style" type="uint" value="0" />
+    </property>
+    <property name="plugin-915" type="string" value="genmon">
+      <property name="use-label" type="bool" value="false" />
+      <property name="update-period" type="int" value="2" />
+      <property name="enable-single-row" type="bool" value="true" />
+      <property name="font" type="string" value="Sans 10" />
+      <property name="command" type="string" value="python3 /usr/share/svent/xfce-panel/scripts/ip.py" />
+    </property>
+    <property name="plugin-910" type="string" value="systray">
+      <property name="size-max" type="uint" value="20" />
+      <property name="square-icons" type="bool" value="true" />
+      <property name="symbolic-icons" type="bool" value="true" />
+    </property>
+    <property name="plugin-911" type="string" value="pulseaudio" />
+    <property name="plugin-912" type="string" value="power-manager-plugin" />
+    <property name="plugin-913" type="string" value="clock">
+      <property name="mode" type="uint" value="2" />
+      <property name="digital-layout" type="uint" value="3" />
+      <property name="digital-format" type="string" value="%H:%M" />
+      <property name="digital-time-format" type="string" value="%H:%M" />
+      <property name="digital-time-font" type="string" value="Sans 10" />
     </property>
   </property>
 </channel>

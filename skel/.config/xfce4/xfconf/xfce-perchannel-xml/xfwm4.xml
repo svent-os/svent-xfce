@@ -4,7 +4,7 @@
     <property name="theme" type="string" value="Greybird-dark"/>
     <property name="title_font" type="string" value="Sans Bold 9"/>
     <property name="button_layout" type="string" value="O|HMC"/>
-    <property name="workspace_count" type="int" value="7"/>
+    <property name="workspace_count" type="int" value="3"/>
     <property name="click_to_focus" type="bool" value="true"/>
   </property>
 </channel>

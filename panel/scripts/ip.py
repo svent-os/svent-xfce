@@ -24,4 +24,6 @@ else:
     command = "python3 " + shlex.quote(str(Path(__file__).resolve())) + " --copy"
     category = selected["type"] if selected else "other"
     tooltip = (category.title() + " on " + selected["interface"] + ". Click to copy IP address") if selected else "No usable IP address"
-    print("<txt>" + html.escape(value) + "</txt><txtclick>" + html.escape(command) + "</txtclick><tool>" + html.escape(tooltip) + "</tool>")
+    icon = Path(__file__).resolve().parent.parent / "icons" / (category + ".svg")
+    picture = "<img>" + html.escape(str(icon)) + "</img><click>" + html.escape(command) + "</click>"
+    print(picture + "<txt>" + html.escape(value) + "</txt><txtclick>" + html.escape(command) + "</txtclick><tool>" + html.escape(tooltip) + "</tool>")

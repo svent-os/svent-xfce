@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Terminal Emulator
+Icon=utilities-terminal
+Exec=python3 /usr/share/svent/xfce-panel/scripts/launch-app.py terminal
+Terminal=false

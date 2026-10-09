@@ -1,16 +1,2 @@
 #!/bin/sh
-# Apply the Svent XFCE panel once per user, on first XFCE login.
-set -u
-flag="${XDG_STATE_HOME:-$HOME/.local/state}/svent-xfce-panel.done"
-[ -f "$flag" ] && exit 0
-# Wait for the panel's xfconf channel to be ready
-i=0
-while [ "$i" -lt 30 ]; do
-  if xfconf-query -c xfce4-panel -l >/dev/null 2>&1; then break; fi
-  i=$((i + 1))
-  sleep 1
-done
-if python3 /usr/share/svent/xfce-panel/apply.py; then
-  mkdir -p "$(dirname "$flag")"
-  : > "$flag"
-fi
+exit 0
