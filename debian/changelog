@@ -1,3 +1,9 @@
+svent-xfce (0.5.7) unstable; urgency=medium
+
+  * Depend on the sv-icon-theme APT package.
+
+ -- z1rov <fabian@zirov.net>  Fri, 09 Oct 2026 20:00:00 -0500
+
 svent-xfce (0.5.6) unstable; urgency=medium
 
   * Activate and regrab keyboard shortcuts automatically on login.
