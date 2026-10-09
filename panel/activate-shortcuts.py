@@ -9,7 +9,7 @@ import gi
 gi.require_version("Xfconf", "0")
 from gi.repository import Xfconf
 
-PROFILE = "0.5.6"
+PROFILE = "0.5.8"
 CHANNEL = "xfce4-keyboard-shortcuts"
 
 def query(*args, check=True):

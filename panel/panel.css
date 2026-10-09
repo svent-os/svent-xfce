@@ -1,3 +1,4 @@
+@import url("svent-thunar.css");
 .xfce4-panel { background-color: #1a1e21; color: #e6e7e8; border: 0; font-family: Sans; font-size: 10pt; }
 .xfce4-panel button { background-image: none; background-color: transparent; color: #e6e7e8; border: 1px solid transparent; border-radius: 3px; box-shadow: none; padding: 2px 6px; }
 .xfce4-panel button:hover { background-color: #30363b; }

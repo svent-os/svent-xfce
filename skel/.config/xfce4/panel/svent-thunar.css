@@ -1,0 +1,78 @@
+.thunar {
+  background-color: #1a1e21;
+  color: #e6e7e8;
+}
+.thunar menubar, .thunar toolbar, .thunar .toolbar, .thunar statusbar {
+  background-image: none;
+  background-color: #20262a;
+  color: #e6e7e8;
+  border-color: #39424a;
+}
+.thunar toolbar { padding: 6px; border-bottom: 1px solid #39424a; }
+.thunar toolbar button, .thunar .toolbar button {
+  background-image: none;
+  background-color: transparent;
+  color: #e6e7e8;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  box-shadow: none;
+  padding: 6px;
+}
+.thunar toolbar button:hover, .thunar .toolbar button:hover {
+  background-color: #30363b;
+  border-color: #a94749;
+}
+.thunar toolbar button:checked, .thunar .toolbar button:checked {
+  background-color: #873c3b;
+  border-color: #ff6266;
+}
+.thunar treeview.view { background-color: #20262a; color: #e6e7e8; }
+.thunar .standard-view, .thunar .standard-view .view {
+  background-color: #1a1e21;
+  color: #e6e7e8;
+}
+.thunar .sidebar, .thunar .sidebar .view {
+  background-color: #20262a;
+  color: #e6e7e8;
+}
+.thunar treeview.view:hover { background-color: #30363b; }
+.thunar .view:selected, .thunar .view:selected:backdrop,
+.thunar .view:selected:focus, .thunar .sidebar row:selected {
+  background-image: none;
+  background-color: #873c3b;
+  color: #ffffff;
+}
+.thunar .view:selected label, .thunar .view:selected:backdrop label { color: #ffffff; }
+.thunar .view .rubberband, .thunar rubberband {
+  background-color: rgba(255, 98, 102, 0.16);
+  border: 1px solid #ff6266;
+}
+.thunar entry {
+  background-image: none;
+  background-color: #15191d;
+  color: #e6e7e8;
+  border: 1px solid #48515a;
+  border-radius: 5px;
+  box-shadow: none;
+  padding: 6px 8px;
+}
+.thunar entry:focus { border-color: #ff6266; }
+.thunar entry selection { background-color: #873c3b; color: #ffffff; }
+.thunar notebook > header { background-color: #20262a; border-color: #39424a; }
+.thunar notebook > header tab {
+  background-color: #272e35;
+  color: #b8bec4;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  padding: 7px 12px;
+}
+.thunar notebook > header tab:checked {
+  background-color: #30363b;
+  color: #ffffff;
+  border-bottom-color: #ff6266;
+}
+.thunar notebook > header tab:hover { background-color: #39424a; }
+.thunar separator { background-color: #39424a; }
+.thunar scrollbar slider { background-color: #48515a; border-radius: 6px; }
+.thunar scrollbar slider:hover { background-color: #a94749; }
+.thunar progressbar progress { background-image: none; background-color: #ff6266; }
