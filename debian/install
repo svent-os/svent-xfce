@@ -26,3 +26,4 @@ share/xfce4/helpers/svent-xfce-terminal.desktop usr/share/xfce4/helpers/
 panel/session-services.py usr/share/svent/xfce-panel/
 panel/start-session.py usr/share/svent/xfce-panel/
 skel/.config/xfce-mimeapps.list etc/skel/.config/
+panel/observe-startup.py usr/share/svent/xfce-panel/

@@ -50,6 +50,7 @@ def activate(desktop, runtime):
                   ("import-environment", "DISPLAY", "XAUTHORITY", "XDG_CURRENT_DESKTOP")]
     if desktop == "xfce":
         operations.append(("start", "--no-block", "xfce4-notifyd.service"))
+        operations.append(("start", "--no-block", "tumblerd.service"))
     timings = []
     for arguments in operations:
         started = time.monotonic()
