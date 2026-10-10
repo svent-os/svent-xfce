@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 
 app = sys.argv[1]
-commands = {"files": [["exo-open", "--launch", "FileManager"]], "firefox": [["firefox-esr"]], "tor": [["torbrowser-launcher"], ["tor-browser"], ["torbrowser"]], "terminal": [["xfce4-terminal"]]}
+commands = {"files": [["exo-open", "--launch", "FileManager"]], "firefox": [["firefox-esr"]], "tor": [["torbrowser-launcher"], ["tor-browser"], ["torbrowser"]], "terminal": [["kitty"]]}
 for command in commands[app]:
     if shutil.which(command[0]):
         subprocess.Popen(command, start_new_session=True)

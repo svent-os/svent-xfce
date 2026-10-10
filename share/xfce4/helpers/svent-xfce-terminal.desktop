@@ -5,5 +5,5 @@ Name=SventOS Terminal
 Icon=org.xfce.terminal
 NoDisplay=true
 X-XFCE-Category=TerminalEmulator
-X-XFCE-Commands=/usr/bin/svent-xfce-tool-terminal;
-X-XFCE-CommandsWithParameter=/usr/bin/svent-xfce-tool-terminal %s;
+X-XFCE-Commands=/usr/bin/kitty;
+X-XFCE-CommandsWithParameter=/usr/bin/kitty %s;

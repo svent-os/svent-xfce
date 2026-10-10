@@ -34,10 +34,10 @@ def main():
         return
     command = tool_command(arguments)
     if not command:
-        os.execvp("xfce4-terminal", ["xfce4-terminal"])
+        os.execvp("kitty", ["kitty"])
         return
     script = str(Path(__file__).resolve())
-    os.execvp("xfce4-terminal", ["xfce4-terminal", "--disable-server", "--title", "SventOS Tools", "--execute", "python3", script, "--inside", *command])
+    os.execvp("kitty", ["kitty", "--title", "SventOS Tools", "python3", script, "--inside", *command])
 
 if __name__ == "__main__":
     main()

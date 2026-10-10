@@ -2,6 +2,6 @@
 Type=Application
 Name=Terminal
 Icon=org.xfce.terminal
-Exec=xfce4-terminal
+Exec=kitty
 Terminal=false
 StartupNotify=true

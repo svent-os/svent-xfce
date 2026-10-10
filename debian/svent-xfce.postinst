@@ -24,8 +24,8 @@ PY
     cp -a /etc/skel/.local/share/desktop-directories/svent.directory "$home/.local/share/desktop-directories/"
     chown "$owner" "$home/.local" "$home/.local/share" "$home/.local/share/desktop-directories" "$home/.local/share/desktop-directories/svent.directory"
     mkdir -p "$home/.config/autostart"
-    cp -a /etc/skel/.config/autostart/svent-wallpaper.desktop /etc/skel/.config/autostart/svent-xfce-panel.desktop "$home/.config/autostart/"
-    chown "$owner" "$home/.config/autostart" "$home/.config/autostart/svent-wallpaper.desktop" "$home/.config/autostart/svent-xfce-panel.desktop"
+    cp -a /etc/skel/.config/autostart/svent-wallpaper.desktop /etc/skel/.config/autostart/svent-xfce-panel.desktop /etc/skel/.config/autostart/svent-xfce-shortcuts.desktop "$home/.config/autostart/"
+    chown "$owner" "$home/.config/autostart" "$home/.config/autostart/svent-wallpaper.desktop" "$home/.config/autostart/svent-xfce-panel.desktop" "$home/.config/autostart/svent-xfce-shortcuts.desktop"
     if [ ! -e "$home/.config/autostart/picom.desktop" ]; then
       cp -a /etc/skel/.config/autostart/picom.desktop "$home/.config/autostart/"
       chown "$owner" "$home/.config/autostart/picom.desktop"
