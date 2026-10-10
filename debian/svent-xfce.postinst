@@ -22,6 +22,10 @@ PY
     mkdir -p "$home/.config/autostart"
     cp -a /etc/skel/.config/autostart/svent-wallpaper.desktop /etc/skel/.config/autostart/svent-xfce-panel.desktop "$home/.config/autostart/"
     chown "$owner" "$home/.config/autostart" "$home/.config/autostart/svent-wallpaper.desktop" "$home/.config/autostart/svent-xfce-panel.desktop"
+    if [ ! -e "$home/.config/autostart/picom.desktop" ]; then
+      cp -a /etc/skel/.config/autostart/picom.desktop "$home/.config/autostart/"
+      chown "$owner" "$home/.config/autostart/picom.desktop"
+    fi
     session_backup="$home/.local/state/svent-xfce/session-before-0.5.6-$(date +%s)"
     for session in "$home"/.cache/sessions/xfce4-session-*; do
       [ -f "$session" ] || continue

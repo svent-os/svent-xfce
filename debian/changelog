@@ -1,3 +1,10 @@
+svent-xfce (0.5.18) unstable; urgency=medium
+
+  * Isolate XFCE notifications from Dunst and BSPWM battery services.
+  * Exclude Picom from the XFCE autostart.
+
+ -- z1rov <fabian@zirov.net>  Sat, 10 Oct 2026 00:00:00 -0500
+
 svent-xfce (0.5.17) unstable; urgency=medium
 
   * Prepare desktop files before starting the native settings service.

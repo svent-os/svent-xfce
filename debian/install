@@ -23,3 +23,4 @@ share/xdg/autostart/svent-xfce-super-key.desktop etc/xdg/autostart/
 share/xdg/autostart/svent-xfce-shortcuts.desktop etc/xdg/autostart/
 bin/svent-xfce-tool-terminal usr/bin/
 share/xfce4/helpers/svent-xfce-terminal.desktop usr/share/xfce4/helpers/
+panel/session-services.py usr/share/svent/xfce-panel/
