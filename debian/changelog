@@ -1,3 +1,11 @@
+svent-xfce (0.5.19) unstable; urgency=medium
+
+  * Move session service activation outside the desktop startup path.
+  * Queue service shutdown without waiting for termination.
+  * Record service activation timings for startup diagnostics.
+
+ -- z1rov <fabian@zirov.net>  Sat, 10 Oct 2026 00:00:00 -0500
+
 svent-xfce (0.5.18) unstable; urgency=medium
 
   * Isolate XFCE notifications from Dunst and BSPWM battery services.
