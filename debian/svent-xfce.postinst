@@ -29,7 +29,7 @@ PY
       mv "$session" "$session_backup/"
     done
     [ ! -d "$session_backup" ] || chown -R "$owner" "$session_backup"
-    [ -f "$home/.config/svent/wallpaper.choice" ] || echo "orca-dark" > "$home/.config/svent/wallpaper.choice"
+    [ -f "$home/.config/svent/wallpaper.choice" ] || echo "currents-dark" > "$home/.config/svent/wallpaper.choice"
     cp -a /etc/skel/.Xresources "$home/.Xresources"
     chown "$owner" "$home/.Xresources" 2>/dev/null || true
     env -u DISPLAY python3 /usr/share/svent/xfce-panel/prepare-desktop.py --config "$home/.config"

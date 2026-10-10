@@ -40,7 +40,7 @@ def prepare(config, monitors, wallpaper_dir=WALLPAPERS):
     default(backdrop, "single-workspace-number", "int", "0")
     screen = set_value(backdrop, "screen0", "empty", None)
     state = config / "svent"
-    choice = (state / "wallpaper.choice").read_text().strip() if (state / "wallpaper.choice").exists() else "orca-dark"
+    choice = (state / "wallpaper.choice").read_text().strip() if (state / "wallpaper.choice").exists() else "currents-dark"
     override = (state / "wallpaper.override").read_text().strip() if (state / "wallpaper.override").exists() else ""
     def usable(image):
         return bool(image) and Path(image).is_file()
@@ -48,7 +48,7 @@ def prepare(config, monitors, wallpaper_dir=WALLPAPERS):
     for name, portrait in monitors:
         monitor = set_value(screen, "monitor" + name, "empty", None)
         local = [node.get("value", "") for node in monitor.findall(".//property[@name='last-image']")]
-        candidates = local + saved + [override, str(wallpaper_dir / ("portrait" if portrait else "landscape") / ("svent-" + choice + ".png")), str(wallpaper_dir / "landscape/svent-orca-dark.png")]
+        candidates = local + saved + [override, str(wallpaper_dir / ("portrait" if portrait else "landscape") / ("svent-" + choice + ".png")), str(wallpaper_dir / "landscape/svent-currents-dark.png")]
         fallback = next((image for image in candidates if usable(image)), "")
         for number in range(5):
             workspace = set_value(monitor, "workspace" + str(number), "empty", None)
