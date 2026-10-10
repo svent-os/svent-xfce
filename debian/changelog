@@ -1,3 +1,17 @@
+svent-xfce (0.5.14) unstable; urgency=medium
+
+  * Use SventOS for visible desktop and tool branding.
+  * Label the security tools menu SventOS through a user directory entry.
+
+ -- z1rov <fabian@zirov.net>  Fri, 09 Oct 2026 23:55:00 -0500
+
+svent-xfce (0.5.13) unstable; urgency=medium
+
+  * Balance workspace and application button heights and spacing.
+  * Use subtle application buttons with a red active indicator.
+
+ -- z1rov <fabian@zirov.net>  Fri, 09 Oct 2026 23:50:00 -0500
+
 svent-xfce (0.5.12) unstable; urgency=medium
 
   * Display five empty workspace rectangles with an active red highlight.

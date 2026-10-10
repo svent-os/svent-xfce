@@ -73,7 +73,7 @@ def main():
     if daemon.returncode == 1 or changed or options.force:
         subprocess.Popen(["xfsettingsd", "--replace"], stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
     if changed:
-        print("Svent shortcuts activated: " + PROFILE)
+        print("SventOS shortcuts activated: " + PROFILE)
 
 if __name__ == "__main__":
     main()

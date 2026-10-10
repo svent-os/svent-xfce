@@ -25,7 +25,7 @@ def main():
             check=False,
         )
         if result.returncode:
-            raise SystemExit("Cannot activate the Svent menu key")
+            raise SystemExit("Cannot activate the SventOS menu key")
 
 
 if __name__ == "__main__":

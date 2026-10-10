@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=Svent Menu Key
+Name=SventOS Menu Key
 Exec=python3 /usr/share/svent/xfce-panel/super-key.py
 OnlyShowIn=XFCE;
 NoDisplay=true

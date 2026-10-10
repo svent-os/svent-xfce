@@ -15,8 +15,9 @@
 .xfce4-panel wnck-pager { background-color: #424c58; color: #d8e0e8; border: 1px solid #657181; border-radius: 3px; }
 .xfce4-panel wnck-pager:hover { background-color: #607082; }
 .xfce4-panel wnck-pager:selected { background-color: #a94749; color: #ffffff; }
-#pager-906 button { background-color: #424c58; border: 1px solid #657181; color: #d8e0e8; margin: 2px; padding: 0; min-width: 40px; min-height: 26px; }
-#pager-906 button:checked { background-color: #a94749; border-color: #ff6266; color: #ffffff; }
+#pager-906 button { background-color: #30383f; border: 1px solid #4b5661; border-radius: 4px; color: #d8e0e8; margin: 4px 2px; padding: 1px 3px; min-width: 30px; min-height: 24px; }
+#pager-906 button:hover { background-color: #424c58; border-color: #657181; }
+#pager-906 button:checked { background-color: #873c3b; border-color: #ff6266; color: #ffffff; }
 #pager-906 button label { opacity: 0; font-size: 0px; text-shadow: none; }
 #genmon-915 button { padding: 2px 5px; border-radius: 4px; }
 
@@ -32,6 +33,6 @@ treeview.view:selected { background-color: #873c3b; color: #ffffff; }
 selection { background-color: #a94749; color: #ffffff; }
 
 .xfce4-panel .tasklist { -XfceTasklist-minimized-icon-lucency: 100; }
-.xfce4-panel .tasklist button { padding: 0; margin: 0 1px; min-height: 32px; min-width: 36px; border: 1px solid #48515a; background-color: #272e35; }
-.xfce4-panel .tasklist button:hover { background-color: #424c58; border-color: #ff6266; }
-.xfce4-panel .tasklist button:checked { background-color: #873c3b; border-color: #ff6266; }
+.xfce4-panel .tasklist button { padding: 1px 3px; margin: 4px 2px; min-height: 24px; min-width: 24px; border: 1px solid transparent; border-radius: 4px; background-color: transparent; }
+.xfce4-panel .tasklist button:hover { background-color: #30383f; border-color: #4b5661; }
+.xfce4-panel .tasklist button:checked { background-color: #3d292d; border-color: transparent; border-bottom-color: #ff6266; }

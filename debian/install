@@ -3,6 +3,7 @@ share/xdg/autostart/svent-xfce-panel.desktop etc/xdg/autostart/
 skel/.config/xfce4 etc/skel/.config/
 skel/.config/gtk-3.0 etc/skel/.config/
 skel/.config/autostart etc/skel/.config/
+skel/.local/share/desktop-directories etc/skel/.local/share/
 bin/svent-xfce-wallpaper usr/bin/
 bin/svent-xfce-firstrun usr/bin/
 panel/apply.py usr/share/svent/xfce-panel/

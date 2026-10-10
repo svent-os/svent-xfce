@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=Desktop Backgrounds
-Comment=Choose a background from the shared Svent artwork folder
+Comment=Choose a background from the shared SventOS artwork folder
 Exec=xfdesktop --settings
 Icon=preferences-desktop-wallpaper
 Categories=Settings;DesktopSettings;

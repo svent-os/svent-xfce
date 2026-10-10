@@ -37,7 +37,7 @@ def main():
         os.execvp("xfce4-terminal", ["xfce4-terminal"])
         return
     script = str(Path(__file__).resolve())
-    os.execvp("xfce4-terminal", ["xfce4-terminal", "--disable-server", "--title", "Svent Tools", "--execute", "python3", script, "--inside", *command])
+    os.execvp("xfce4-terminal", ["xfce4-terminal", "--disable-server", "--title", "SventOS Tools", "--execute", "python3", script, "--inside", *command])
 
 if __name__ == "__main__":
     main()

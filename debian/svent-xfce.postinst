@@ -16,6 +16,9 @@ shutil.copytree("/etc/skel/.config/xfce4", destination,
                 dirs_exist_ok=True, ignore=preserve_background)
 PY
     chmod 0755 "$home/.config/xfce4/xinitrc"
+    mkdir -p "$home/.local/share/desktop-directories"
+    cp -a /etc/skel/.local/share/desktop-directories/svent.directory "$home/.local/share/desktop-directories/"
+    chown "$owner" "$home/.local" "$home/.local/share" "$home/.local/share/desktop-directories" "$home/.local/share/desktop-directories/svent.directory"
     mkdir -p "$home/.config/autostart"
     cp -a /etc/skel/.config/autostart/svent-wallpaper.desktop /etc/skel/.config/autostart/svent-xfce-panel.desktop "$home/.config/autostart/"
     chown "$owner" "$home/.config/autostart" "$home/.config/autostart/svent-wallpaper.desktop" "$home/.config/autostart/svent-xfce-panel.desktop"
