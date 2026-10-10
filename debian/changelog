@@ -1,3 +1,11 @@
+svent-xfce (0.5.21) unstable; urgency=medium
+
+  * Start the Thunar daemon before desktop file-manager requests.
+  * Prefer Thunar for folders within XFCE only.
+  * Preserve existing desktop-specific application preferences.
+
+ -- z1rov <fabian@zirov.net>  Sat, 10 Oct 2026 00:00:00 -0500
+
 svent-xfce (0.5.20) unstable; urgency=medium
 
   * Start the desktop alongside the panel before the Thunar daemon.

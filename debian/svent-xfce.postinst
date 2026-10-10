@@ -15,6 +15,10 @@ def preserve_background(folder, names):
 shutil.copytree("/etc/skel/.config/xfce4", destination,
                 dirs_exist_ok=True, ignore=preserve_background)
 PY
+    if [ ! -e "$home/.config/xfce-mimeapps.list" ]; then
+      cp -a /etc/skel/.config/xfce-mimeapps.list "$home/.config/"
+      chown "$owner" "$home/.config/xfce-mimeapps.list"
+    fi
     chmod 0755 "$home/.config/xfce4/xinitrc"
     mkdir -p "$home/.local/share/desktop-directories"
     cp -a /etc/skel/.local/share/desktop-directories/svent.directory "$home/.local/share/desktop-directories/"
