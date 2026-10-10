@@ -42,7 +42,7 @@ def main():
             (Path(runtime) / "svent-xfce-startup.json").write_text(json.dumps(timings, indent=2), encoding="utf-8")
         except OSError:
             pass
-    if runtime:
+    if runtime and os.environ.get("SVENT_STARTUP_DIAGNOSTICS") == "1":
         subprocess.Popen([sys.executable, str(folder / "observe-startup.py")],
                          stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL,
                          stderr=subprocess.DEVNULL, start_new_session=True)

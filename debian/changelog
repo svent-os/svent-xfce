@@ -1,3 +1,10 @@
+svent-xfce (0.5.23) unstable; urgency=medium
+
+  * Make repeated Xorg readiness queries opt-in for startup diagnostics.
+  * Keep lightweight preparation timings without probing desktop windows.
+
+ -- z1rov <fabian@zirov.net>  Sat, 10 Oct 2026 00:00:00 -0500
+
 svent-xfce (0.5.22) unstable; urgency=medium
 
   * Reuse the startup interpreter for desktop preparation.
