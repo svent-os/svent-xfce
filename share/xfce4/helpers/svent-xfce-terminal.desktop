@@ -6,4 +6,4 @@ Icon=org.xfce.terminal
 NoDisplay=true
 X-XFCE-Category=TerminalEmulator
 X-XFCE-Commands=/usr/bin/xfce4-terminal;
-X-XFCE-CommandsWithParameter=/usr/bin/xfce4-terminal %s;
+X-XFCE-CommandsWithParameter=/usr/bin/svent-xfce-tool-terminal %s;
