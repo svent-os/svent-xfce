@@ -61,9 +61,11 @@ def prepare(config, monitors, wallpaper_dir=WALLPAPERS):
             default(workspace, "backdrop-cycle-enable", "bool", "false")
     path.parent.mkdir(parents=True, exist_ok=True)
     ET.indent(tree)
-    temp = path.with_suffix(".svent-tmp")
-    tree.write(temp, encoding="utf-8", xml_declaration=True)
-    temp.replace(path)
+    data = ET.tostring(root, encoding="utf-8", xml_declaration=True)
+    if not path.exists() or path.read_bytes() != data:
+        temp = path.with_suffix(".svent-tmp")
+        temp.write_bytes(data)
+        temp.replace(path)
     return root
 
 def main():
@@ -97,14 +99,12 @@ def main():
                     key = prefix + "/" + node.attrib["name"]
                     kind = node.get("type")
                     value = node.get("value")
-                    if kind == "string":
-                        channel.set_string(key, value)
-                    elif kind == "bool":
-                        channel.set_bool(key, value == "true")
-                    elif kind == "int":
-                        channel.set_int(key, int(value))
-                    elif kind == "uint":
-                        channel.set_uint(key, int(value))
+                    if kind in ("string", "bool", "int", "uint"):
+                        desired = value if kind == "string" else value == "true" if kind == "bool" else int(value)
+                        reader = getattr(channel, "get_" + kind)
+                        writer = getattr(channel, "set_" + kind)
+                        if not channel.has_property(key) or reader(key, desired) != desired:
+                            writer(key, desired)
                     apply(node, key)
             apply(root)
             Xfconf.shutdown()

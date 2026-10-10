@@ -1,3 +1,12 @@
+svent-xfce (0.5.15) unstable; urgency=medium
+
+  * Restore full empty workspace rectangles and center application buttons.
+  * Remove the bottom active indicator and use a uniform active border.
+  * Reference the distribution logo in the SventOS tools menu.
+  * Avoid redundant settings restarts, wallpaper writes and resource loading.
+
+ -- z1rov <fabian@zirov.net>  Fri, 09 Oct 2026 23:59:00 -0500
+
 svent-xfce (0.5.14) unstable; urgency=medium
 
   * Use SventOS for visible desktop and tool branding.
