@@ -1,3 +1,10 @@
+svent-xfce (0.5.26) unstable; urgency=medium
+
+  * Store the terminal shell and appearance in the native Xfconf channel.
+  * Keep one keyboard combination per XFWM action.
+
+ -- z1rov <fabian@zirov.net>  Sat, 10 Oct 2026 00:00:00 -0500
+
 svent-xfce (0.5.25) unstable; urgency=medium
 
   * Restore XFCE Terminal with the SventOS Zsh profile.
