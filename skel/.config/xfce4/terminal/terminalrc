@@ -15,3 +15,5 @@ ColorBackground=#191d22
 ColorCursor=#ff6266
 ColorCursorUseDefault=FALSE
 ColorPalette=#191d22;#ff6266;#a3be8c;#ebcb8b;#81a1c1;#b48ead;#88c0d0;#e6e7e8;#7e8995;#ff8083;#b4d49a;#f3d69b;#95b5d5;#c4a0ff;#9bd7e7;#ffffff
+RunCustomCommand=TRUE
+CustomCommand=/usr/bin/zsh
