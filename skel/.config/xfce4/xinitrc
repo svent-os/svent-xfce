@@ -6,6 +6,4 @@ unset LC_ALL
 export LANGUAGE=en
 export LC_MESSAGES=C
 export XDG_CURRENT_DESKTOP=XFCE
-python3 /usr/share/svent/xfce-panel/session-services.py xfce
-python3 /usr/share/svent/xfce-panel/prepare-desktop.py --offline
-exec /etc/xdg/xfce4/xinitrc "$@"
+exec python3 /usr/share/svent/xfce-panel/start-session.py "$@"

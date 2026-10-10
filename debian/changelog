@@ -1,3 +1,11 @@
+svent-xfce (0.5.20) unstable; urgency=medium
+
+  * Start the desktop alongside the panel before the Thunar daemon.
+  * Record pre-session preparation and native session handoff timings.
+  * Bound desktop preparation so failures cannot indefinitely block login.
+
+ -- z1rov <fabian@zirov.net>  Sat, 10 Oct 2026 00:00:00 -0500
+
 svent-xfce (0.5.19) unstable; urgency=medium
 
   * Move session service activation outside the desktop startup path.

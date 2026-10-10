@@ -3,4 +3,9 @@
   <property name="general" type="empty">
     <property name="SaveOnExit" type="bool" value="false"/>
   </property>
+  <property name="sessions" type="empty">
+    <property name="Failsafe" type="empty">
+      <property name="Client4_Priority" type="int" value="25"/>
+    </property>
+  </property>
 </channel>
