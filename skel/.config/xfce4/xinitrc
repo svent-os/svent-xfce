@@ -5,5 +5,5 @@ fi
 unset LC_ALL
 export LANGUAGE=en
 export LC_MESSAGES=C
-python3 /usr/share/svent/xfce-panel/prepare-desktop.py
+python3 /usr/share/svent/xfce-panel/prepare-desktop.py --offline
 exec /etc/xdg/xfce4/xinitrc "$@"

@@ -71,6 +71,7 @@ def prepare(config, monitors, wallpaper_dir=WALLPAPERS):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", type=Path)
+    parser.add_argument("--offline", action="store_true")
     args = parser.parse_args()
     config = args.config or Path(os.environ.get("XDG_CONFIG_HOME", str(Path.home() / ".config")))
     monitors = [("0", False)]
@@ -88,7 +89,7 @@ def main():
         except (OSError, subprocess.TimeoutExpired):
             pass
     root = prepare(config, monitors)
-    if os.environ.get("DISPLAY"):
+    if os.environ.get("DISPLAY") and not args.offline:
         import gi
         gi.require_version("Xfconf", "0")
         from gi.repository import Xfconf

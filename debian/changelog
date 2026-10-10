@@ -1,3 +1,11 @@
+svent-xfce (0.5.17) unstable; urgency=medium
+
+  * Prepare desktop files before starting the native settings service.
+  * Apply packaged shortcuts once per profile revision.
+  * Preserve subsequent user shortcut customizations during login.
+
+ -- z1rov <fabian@zirov.net>  Sat, 10 Oct 2026 00:00:00 -0500
+
 svent-xfce (0.5.16) unstable; urgency=medium
 
   * Require the validated shared artwork catalog and logo exports.

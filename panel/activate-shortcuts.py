@@ -1,13 +1,10 @@
 #!/usr/bin/env python3
 import argparse
 import os
+import hashlib
 import subprocess
 import xml.etree.ElementTree as ET
 from pathlib import Path
-import gi
-
-gi.require_version("Xfconf", "0")
-from gi.repository import Xfconf
 
 PROFILE = "0.5.8"
 CHANNEL = "xfce4-keyboard-shortcuts"
@@ -45,7 +42,13 @@ def main():
         print(query("-l", "-v").stdout)
         return
     source = Path("/etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml")
-    wanted = bindings(ET.parse(source).getroot())
+    state = Path(os.environ.get("XDG_STATE_HOME", str(Path.home() / ".local/state"))) / "svent-xfce"
+    marker = state / "shortcuts-applied"
+    data = source.read_bytes()
+    signature = hashlib.sha256(PROFILE.encode() + data).hexdigest()
+    if not options.force and marker.is_file() and marker.read_text(encoding="utf-8").strip() == signature:
+        return
+    wanted = bindings(ET.fromstring(data))
     root_key = "/svent/shortcuts-profile"
     snapshot = query("-l", "-v").stdout
     existing = {}
@@ -56,6 +59,10 @@ def main():
     matches = all(existing.get(key, "").lower() == value.lower() if kind == "bool" else existing.get(key) == value for key, kind, value in wanted)
     changed = existing.get(root_key) != PROFILE or not matches or "/commands/custom/Super_L" in existing
     if changed:
+        global Xfconf
+        import gi
+        gi.require_version("Xfconf", "0")
+        from gi.repository import Xfconf
         if not Xfconf.init():
             raise RuntimeError("Cannot initialize keyboard shortcut settings")
         state = Path(os.environ.get("XDG_STATE_HOME", str(Path.home() / ".local/state"))) / "svent-xfce"
@@ -72,6 +79,10 @@ def main():
     daemon = subprocess.run(["pgrep", "-u", str(os.getuid()), "-x", "xfsettingsd"], capture_output=True)
     if daemon.returncode == 1 or changed or options.force:
         subprocess.Popen(["xfsettingsd", "--replace"], stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
+    state.mkdir(parents=True, exist_ok=True)
+    temporary = marker.with_suffix(".tmp")
+    temporary.write_text(signature + "\n", encoding="utf-8")
+    temporary.replace(marker)
     if changed:
         print("SventOS shortcuts activated: " + PROFILE)
 
