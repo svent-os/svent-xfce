@@ -6,7 +6,7 @@ import subprocess
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-PROFILE = "0.5.30"
+PROFILE = "0.5.31"
 CHANNEL = "xfce4-keyboard-shortcuts"
 
 def query(*args, check=True):

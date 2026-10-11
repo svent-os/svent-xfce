@@ -1,0 +1,36 @@
+#!/usr/bin/env python3
+import argparse
+import datetime
+import os
+from pathlib import Path
+import subprocess
+import uuid
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("mode", choices=("fullscreen", "region", "window"))
+    options = parser.parse_args()
+    if not os.environ.get("DISPLAY"):
+        parser.error("An X11 desktop session is required")
+    folder = Path.home() / "Pictures" / "Clipboard"
+    folder.mkdir(parents=True, exist_ok=True)
+    stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    image = folder / ("SventOS_" + stamp + "_" + uuid.uuid4().hex[:8] + ".png")
+    capture = subprocess.run(["xfce4-screenshooter", "--" + options.mode, "--save", str(image)])
+    if not image.exists():
+        return capture.returncode
+    with image.open("rb") as stream:
+        valid = stream.read(8) == b"\x89PNG\r\n\x1a\n"
+    if capture.returncode or not valid:
+        image.unlink()
+        subprocess.run(["notify-send", "--urgency=critical", "Screenshot failed", "No valid PNG was saved"], check=False)
+        return 1
+    copied = subprocess.run(["xclip", "-selection", "clipboard", "-t", "image/png", "-i", str(image)])
+    title = "Screenshot saved and copied" if copied.returncode == 0 else "Screenshot saved; clipboard unavailable"
+    subprocess.run(["notify-send", "--icon=applets-screenshooter", title, str(image)], check=False)
+    return copied.returncode
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -1,3 +1,10 @@
+svent-xfce (0.5.31) unstable; urgency=medium
+
+  * Save screenshot PNG files before copying them to the clipboard.
+  * Notify users of the saved path and handle cancelled captures.
+
+ -- z1rov <fabian@zirov.net>  Sun, 11 Oct 2026 18:30:00 -0500
+
 svent-xfce (0.5.30) unstable; urgency=medium
 
   * Require the native XFCE screenshot application.

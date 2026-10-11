@@ -3,11 +3,11 @@
   <property name="commands" type="empty">
     <property name="default" type="empty" />
     <property name="custom" type="empty">
-      <property name="Print" type="string" value="xfce4-screenshooter --fullscreen" />
-      <property name="&lt;Shift&gt;Print" type="string" value="xfce4-screenshooter --region" />
-      <property name="&lt;Alt&gt;Print" type="string" value="xfce4-screenshooter --window" />
-      <property name="&lt;Super&gt;s" type="string" value="xfce4-screenshooter --fullscreen --clipboard" />
-      <property name="&lt;Super&gt;&lt;Shift&gt;s" type="string" value="xfce4-screenshooter --region --clipboard" />
+      <property name="Print" type="string" value="svent-xfce-screenshot fullscreen" />
+      <property name="&lt;Shift&gt;Print" type="string" value="svent-xfce-screenshot region" />
+      <property name="&lt;Alt&gt;Print" type="string" value="svent-xfce-screenshot window" />
+      <property name="&lt;Super&gt;s" type="string" value="svent-xfce-screenshot fullscreen" />
+      <property name="&lt;Super&gt;&lt;Shift&gt;s" type="string" value="svent-xfce-screenshot region" />
       <property name="&lt;Primary&gt;&lt;Alt&gt;t" type="string" value="xfce4-terminal" />
       <property name="&lt;Super&gt;Return" type="string" value="xfce4-terminal" />
       <property name="&lt;Super&gt;e" type="string" value="thunar" />
