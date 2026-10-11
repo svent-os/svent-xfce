@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=SventOS Silent Input
+Exec=xset b off
+OnlyShowIn=XFCE;
+NoDisplay=true
+Terminal=false

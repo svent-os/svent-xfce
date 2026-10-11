@@ -1,3 +1,10 @@
+svent-xfce (0.5.32) unstable; urgency=medium
+
+  * Disable X11 and GTK input error bells in XFCE sessions.
+  * Disable terminal bells and start Zsh with NO_BEEP.
+
+ -- z1rov <fabian@zirov.net>  Sun, 11 Oct 2026 19:00:00 -0500
+
 svent-xfce (0.5.31) unstable; urgency=medium
 
   * Save screenshot PNG files before copying them to the clipboard.

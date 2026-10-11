@@ -7,6 +7,7 @@
     <property name="EnableInputFeedbackSounds" type="bool" value="false"/>
   </property>
   <property name="Gtk" type="empty">
+    <property name="ErrorBell" type="bool" value="false"/>
     <property name="FontName" type="string" value="Sans 10"/>
     <property name="MonospaceFontName" type="string" value="JetBrains Mono 10"/>
     <property name="CursorThemeName" type="string" value="default"/>

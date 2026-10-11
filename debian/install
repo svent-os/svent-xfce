@@ -28,3 +28,4 @@ panel/start-session.py usr/share/svent/xfce-panel/
 skel/.config/xfce-mimeapps.list etc/skel/.config/
 panel/observe-startup.py usr/share/svent/xfce-panel/
 bin/svent-xfce-screenshot usr/bin/
+share/xdg/autostart/svent-xfce-silent-input.desktop etc/xdg/autostart/
