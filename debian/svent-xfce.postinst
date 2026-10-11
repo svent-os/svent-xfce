@@ -52,7 +52,9 @@ s = p.read_text() if p.exists() else ""
 s = re.sub(r"/\* BEGIN Z1ROV DARK PANEL \*/.*?/\* END Z1ROV DARK PANEL \*/\n?", "", s, flags=re.S)
 line = '@import url("../xfce4/panel/svent-panel.css");'
 s = s.replace(line, "")
-s = line + "\n" + s.lstrip()
+terminal_line = '@import url("../xfce4/panel/svent-terminal.css");'
+s = s.replace(terminal_line, "")
+s = line + "\n" + terminal_line + "\n" + s.lstrip()
 p.write_text(s, encoding="utf-8")
 PY
     chown "$owner" "$home/.config/gtk-3.0" "$css" 2>/dev/null || true

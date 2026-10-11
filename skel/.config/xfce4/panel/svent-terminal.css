@@ -1,0 +1,23 @@
+window.background vte-terminal ~ scrollbar.vertical {
+    background-color: #191d22;
+    border: none;
+}
+window.background vte-terminal ~ scrollbar.vertical trough {
+    background-color: #191d22;
+    border: none;
+    min-width: 8px;
+}
+window.background vte-terminal ~ scrollbar.vertical slider {
+    background-color: #48515a;
+    border: none;
+    border-radius: 6px;
+    min-width: 6px;
+    min-height: 32px;
+    margin: 2px;
+}
+window.background vte-terminal ~ scrollbar.vertical slider:hover {
+    background-color: #a94749;
+}
+window.background vte-terminal ~ scrollbar.vertical slider:active {
+    background-color: #ff6266;
+}
