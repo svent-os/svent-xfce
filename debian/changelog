@@ -1,3 +1,11 @@
+svent-xfce (0.5.30) unstable; urgency=medium
+
+  * Require the native XFCE screenshot application.
+  * Restore full-screen, region and active-window screenshot shortcuts.
+  * Refresh existing session shortcut profiles after upgrading.
+
+ -- z1rov <fabian@zirov.net>  Sun, 11 Oct 2026 18:00:00 -0500
+
 svent-xfce (0.5.29) unstable; urgency=medium
 
   * Publish the revised terminal scrollbar defaults as a new package version.
