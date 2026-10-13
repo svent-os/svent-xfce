@@ -1,3 +1,9 @@
+svent-xfce (0.5.35) unstable; urgency=medium
+
+  * Require the power-manager panel plugin when adding XFCE to an existing system.
+
+ -- z1rov <fabian@zirov.net>  Tue, 13 Oct 2026 03:00:00 -0500
+
 svent-xfce (0.5.34) unstable; urgency=medium
 
   * Scale the network badge text and icon using the shared display state.
