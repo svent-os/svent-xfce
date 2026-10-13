@@ -1,3 +1,10 @@
+svent-xfce (0.5.33) unstable; urgency=medium
+
+  * Prepare automatic display scaling before starting the XFCE session.
+  * Monitor display changes through the shared SventOS scaling service.
+
+ -- z1rov <fabian@zirov.net>  Mon, 12 Oct 2026 23:40:00 -0500
+
 svent-xfce (0.5.32) unstable; urgency=medium
 
   * Disable X11 and GTK input error bells in XFCE sessions.

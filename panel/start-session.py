@@ -34,6 +34,14 @@ def main():
             print("SventOS startup: " + str(error), file=sys.stderr)
             status = -1
         timings["steps"].append({"name": name, "seconds": round(time.monotonic() - before, 4), "status": status})
+    scaling = Path('/usr/libexec/svent/display-scale')
+    if scaling.is_file():
+        before = time.monotonic()
+        try:
+            subprocess.run([sys.executable, str(scaling), 'prepare', 'xfce'], timeout=3, check=False)
+        except (OSError, subprocess.TimeoutExpired) as error:
+            print('SventOS display: ' + str(error), file=sys.stderr)
+        timings['steps'].append({'name': 'display-scale', 'seconds': round(time.monotonic() - before, 4)})
     timings["native_handoff_at"] = time.monotonic()
     timings["seconds"] = round(timings["native_handoff_at"] - started, 4)
     runtime = os.environ.get("XDG_RUNTIME_DIR")
