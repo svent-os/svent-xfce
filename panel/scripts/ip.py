@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 import html
+import hashlib
+import json
+import math
 import os
 import shutil
 import shlex
@@ -11,10 +14,21 @@ from network import read_ip, select_network
 
 SVG = "http://www.w3.org/2000/svg"
 
-def badge_svg(value, category):
+def display_scale():
+    folder = Path(os.environ.get('XDG_RUNTIME_DIR', str(Path.home() / '.cache')))
+    suffix = hashlib.sha256(os.environ.get('DISPLAY', '').encode()).hexdigest()[:12]
+    try:
+        record = json.loads((folder / ('svent-display-' + suffix) / 'state.json').read_text())
+        scale = float(record['scale'])
+        return scale if math.isfinite(scale) and 1 <= scale <= 2.5 else 1.0
+    except (OSError, ValueError, KeyError, TypeError):
+        return 1.0
+
+
+def badge_svg(value, category, scale=1.0):
     ET.register_namespace("", SVG)
     width = 30 + max(5, len(value)) * 8
-    root = ET.Element("{" + SVG + "}svg", width=str(width), height="24", viewBox=f"0 0 {width} 24")
+    root = ET.Element("{" + SVG + "}svg", width=str(round(width * scale)), height=str(round(24 * scale)), viewBox=f"0 0 {width} 24")
     path = Path(__file__).resolve().parent.parent / "icons" / (category + ".svg")
     if not path.is_file():
         path = path.with_name("other.svg")
@@ -49,7 +63,7 @@ def main():
     cache = Path(os.environ.get("XDG_CACHE_HOME", str(Path.home() / ".cache"))) / "svent-xfce"
     cache.mkdir(parents=True, exist_ok=True)
     badge = cache / "network.svg"
-    content = badge_svg(value, category)
+    content = badge_svg(value, category, display_scale())
     if not badge.exists() or badge.read_text() != content:
         temp = badge.with_name(f"network-{os.getpid()}.tmp")
         temp.write_text(content, encoding="utf-8")
